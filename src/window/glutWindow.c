@@ -2769,7 +2769,7 @@ if (!__Pyx_RefNanny) {
  * """Class to create a window using FreeGLUT."""
  * 
  * from OpenGL import GLUT as glut             # <<<<<<<<<<<<<<
- * from ..input import KeyCode, KeyState
+ * from ..input import KeyCode, KeyState  # lgtm [py/unused-import]
  * from .. import config
  */
   __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
@@ -2789,7 +2789,7 @@ if (!__Pyx_RefNanny) {
   /* "pyunity/window/glutWindow.py":4
  * 
  * from OpenGL import GLUT as glut
- * from ..input import KeyCode, KeyState             # <<<<<<<<<<<<<<
+ * from ..input import KeyCode, KeyState  # lgtm [py/unused-import]             # <<<<<<<<<<<<<<
  * from .. import config
  * 
  */
@@ -2816,7 +2816,7 @@ if (!__Pyx_RefNanny) {
 
   /* "pyunity/window/glutWindow.py":5
  * from OpenGL import GLUT as glut
- * from ..input import KeyCode, KeyState
+ * from ..input import KeyCode, KeyState  # lgtm [py/unused-import]
  * from .. import config             # <<<<<<<<<<<<<<
  * 
  * class Window:

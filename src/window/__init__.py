@@ -1,10 +1,6 @@
 """
-pyunity.window
-==============
 A module used to load the window providers.
 
-Windows
--------
 The window is provided by one of three
 providers: GLFW, PySDL2 and GLUT.
 When you first import PyUnity, it checks
@@ -65,6 +61,7 @@ def glutCheck():
     import OpenGL.GLUT
     OpenGL.GLUT.glutInit()
 
+
 providers = {
     "GLFW": ("glfwWindow", glfwCheck),
     "PySDL2": ("sdl2Window", sdl2Check),
@@ -102,7 +99,8 @@ def GetWindowProvider():
 
 def SetWindowProvider(name):
     if name not in providers:
-        raise PyUnityException("No window provider named " + repr(name) + " found")
+        raise PyUnityException(
+            "No window provider named " + repr(name) + " found")
     module, checker = providers[name]
     windowProvider = None
     try:

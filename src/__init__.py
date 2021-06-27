@@ -144,11 +144,12 @@ create a new pull request.
 
 """
 
+import os
 from . import logger as Logger  # lgtm[py/import-own-module]
 from .audio import *
 from .core import *
-from . import loader as Loader  # lgtm[py/import-own-module]
 from . import input as Input  # lgtm[py/import-own-module]
+from . import loader as Loader  # lgtm[py/import-own-module]
 from .input import KeyCode, KeyState
 from .physics import *
 from .errors import *
@@ -162,11 +163,11 @@ __version__ = "0.7.0"
 __copyright__ = "Copyright 2020-2021 Ray Chen"
 __email__ = "tankimarshal2@gmail.com"
 __license__ = "MIT License"
-__summary__ = "A Python implementation of the Unity Engine that supports different types of windows."
+__summary__ = "A Python implementation of the Unity Engine"
 __title__ = "pyunity"
 __uri__ = "https://pyunity.readthedocs.io/en/latest/"
 
-from . import audio, core, physics, errors, files
+from . import audio, core, physics, errors, files, config, window
 __all__ = ["Vector3", "Quaternion", "KeyState",
            "SceneManager", "Mesh", "Loader",
            "Logger", "Behaviour", "Input", "KeyCode"]
@@ -175,6 +176,10 @@ __all__.extend(core.__all__)
 __all__.extend(physics.__all__)
 __all__.extend(errors.__all__)
 __all__.extend(files.__all__)
+
+
+if "PYUNITY_TESTING" not in os.environ:
+    config.windowProvider = window.GetWindowProvider()
 
 Logger.LogLine(Logger.DEBUG, "Loaded PyUnity version %s" % __version__)
 Logger.LogSpecial(Logger.INFO, Logger.RUNNING_TIME)
