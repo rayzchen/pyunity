@@ -5,7 +5,7 @@
     "distutils": {
         "name": "pyunity.physics.core",
         "sources": [
-            "D:\\RayChen2\\Ray's docs and txts...anythin!\\python\\share\\pyunity\\pyunity\\physics\\core.py"
+            "C:\\Users\\edche\\OneDrive\\Documents\\Ray\\pyunity\\pyunity\\physics\\core.py"
         ]
     },
     "module_name": "pyunity.physics.core"
