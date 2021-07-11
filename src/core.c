@@ -8692,7 +8692,7 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_2position(CYTHON_UNUSED PyOb
  *         if self.parent is None:
  *             return self.localPosition             # <<<<<<<<<<<<<<
  *         else:
- *             return self.parent.position + self.localRotation.RotateVector(self.localPosition)
+ *             return self.parent.position + self.localRotation.RotateVector(self.localPosition) * self.parent.scale
  */
     __Pyx_XDECREF(__pyx_r);
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_localPosition); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 422, __pyx_L1_error)
@@ -8713,7 +8713,7 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_2position(CYTHON_UNUSED PyOb
   /* "pyunity/core.py":424
  *             return self.localPosition
  *         else:
- *             return self.parent.position + self.localRotation.RotateVector(self.localPosition)             # <<<<<<<<<<<<<<
+ *             return self.parent.position + self.localRotation.RotateVector(self.localPosition) * self.parent.scale             # <<<<<<<<<<<<<<
  * 
  *     @position.setter
  */
@@ -8752,12 +8752,21 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_2position(CYTHON_UNUSED PyOb
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
-    __pyx_t_6 = PyNumber_Add(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 424, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_parent); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 424, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_scale); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 424, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_6 = PyNumber_Multiply(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 424, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_r = __pyx_t_6;
-    __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_5 = PyNumber_Add(__pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 424, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_r = __pyx_t_5;
+    __pyx_t_5 = 0;
     goto __pyx_L0;
   }
 
@@ -8785,7 +8794,7 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_2position(CYTHON_UNUSED PyOb
 }
 
 /* "pyunity/core.py":426
- *             return self.parent.position + self.localRotation.RotateVector(self.localPosition)
+ *             return self.parent.position + self.localRotation.RotateVector(self.localPosition) * self.parent.scale
  * 
  *     @position.setter             # <<<<<<<<<<<<<<
  *     def position(self, value):
@@ -8889,6 +8898,7 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_4position(CYTHON_UNUSED PyOb
   PyObject *__pyx_t_5 = NULL;
   PyObject *__pyx_t_6 = NULL;
   int __pyx_t_7;
+  PyObject *__pyx_t_8 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -8983,7 +8993,7 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_4position(CYTHON_UNUSED PyOb
  *         if self.parent is None:
  *             self.localPosition = value             # <<<<<<<<<<<<<<
  *         else:
- *             self.localRotation.conjugate.RotateVector(
+ *             self.localPosition = self.localRotation.conjugate.RotateVector(
  */
     if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_localPosition, __pyx_v_value) < 0) __PYX_ERR(0, 433, __pyx_L1_error)
 
@@ -9000,8 +9010,8 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_4position(CYTHON_UNUSED PyOb
   /* "pyunity/core.py":435
  *             self.localPosition = value
  *         else:
- *             self.localRotation.conjugate.RotateVector(             # <<<<<<<<<<<<<<
- *                 value - self.parent.position)
+ *             self.localPosition = self.localRotation.conjugate.RotateVector(             # <<<<<<<<<<<<<<
+ *                 value / self.scale - self.parent.position)
  * 
  */
   /*else*/ {
@@ -9016,46 +9026,61 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_4position(CYTHON_UNUSED PyOb
 
     /* "pyunity/core.py":436
  *         else:
- *             self.localRotation.conjugate.RotateVector(
- *                 value - self.parent.position)             # <<<<<<<<<<<<<<
+ *             self.localPosition = self.localRotation.conjugate.RotateVector(
+ *                 value / self.scale - self.parent.position)             # <<<<<<<<<<<<<<
  * 
  *     @property
  */
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_parent); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 436, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_scale); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 436, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_position); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 436, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyNumber_Divide(__pyx_v_value, __pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 436, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyNumber_Subtract(__pyx_v_value, __pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 436, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_parent); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 436, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_position); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 436, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __pyx_t_6 = PyNumber_Subtract(__pyx_t_5, __pyx_t_8); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 436, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = NULL;
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+    __pyx_t_8 = NULL;
     __pyx_t_7 = 0;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
-      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
-      if (likely(__pyx_t_5)) {
+      __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_8)) {
         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
-        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(__pyx_t_8);
         __Pyx_INCREF(function);
         __Pyx_DECREF_SET(__pyx_t_4, function);
         __pyx_t_7 = 1;
       }
     }
     {
-      PyObject *__pyx_callargs[2] = {__pyx_t_5, __pyx_t_6};
+      PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_t_6};
       __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
-      __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 435, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
+
+    /* "pyunity/core.py":435
+ *             self.localPosition = value
+ *         else:
+ *             self.localPosition = self.localRotation.conjugate.RotateVector(             # <<<<<<<<<<<<<<
+ *                 value / self.scale - self.parent.position)
+ * 
+ */
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_localPosition, __pyx_t_1) < 0) __PYX_ERR(0, 435, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
   __pyx_L4:;
 
   /* "pyunity/core.py":426
- *             return self.parent.position + self.localRotation.RotateVector(self.localPosition)
+ *             return self.parent.position + self.localRotation.RotateVector(self.localPosition) * self.parent.scale
  * 
  *     @position.setter             # <<<<<<<<<<<<<<
  *     def position(self, value):
@@ -9070,6 +9095,7 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_4position(CYTHON_UNUSED PyOb
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_8);
   __Pyx_AddTraceback("pyunity.core.Transform.position", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -9079,7 +9105,7 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_4position(CYTHON_UNUSED PyOb
 }
 
 /* "pyunity/core.py":438
- *                 value - self.parent.position)
+ *                 value / self.scale - self.parent.position)
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def rotation(self):
@@ -9194,7 +9220,7 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_6rotation(CYTHON_UNUSED PyOb
  *         if self.parent is None:
  *             return self.localRotation             # <<<<<<<<<<<<<<
  *         else:
- *             return self.localRotation * self.parent.rotation
+ *             return self.parent.rotation * self.localRotation
  */
     __Pyx_XDECREF(__pyx_r);
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_localRotation); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 442, __pyx_L1_error)
@@ -9215,30 +9241,30 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_6rotation(CYTHON_UNUSED PyOb
   /* "pyunity/core.py":444
  *             return self.localRotation
  *         else:
- *             return self.localRotation * self.parent.rotation             # <<<<<<<<<<<<<<
+ *             return self.parent.rotation * self.localRotation             # <<<<<<<<<<<<<<
  * 
  *     @rotation.setter
  */
   /*else*/ {
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_localRotation); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 444, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_parent); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 444, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_parent); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 444, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_rotation); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 444, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyNumber_Multiply(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 444, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_rotation); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 444, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_r = __pyx_t_4;
-    __pyx_t_4 = 0;
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_self, __pyx_n_s_localRotation); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 444, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_5 = PyNumber_Multiply(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 444, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_r = __pyx_t_5;
+    __pyx_t_5 = 0;
     goto __pyx_L0;
   }
 
   /* "pyunity/core.py":438
- *                 value - self.parent.position)
+ *                 value / self.scale - self.parent.position)
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def rotation(self):
@@ -9259,7 +9285,7 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_6rotation(CYTHON_UNUSED PyOb
 }
 
 /* "pyunity/core.py":446
- *             return self.localRotation * self.parent.rotation
+ *             return self.parent.rotation * self.localRotation
  * 
  *     @rotation.setter             # <<<<<<<<<<<<<<
  *     def rotation(self, value):
@@ -9487,7 +9513,7 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_8rotation(CYTHON_UNUSED PyOb
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "pyunity/core.py":446
- *             return self.localRotation * self.parent.rotation
+ *             return self.parent.rotation * self.localRotation
  * 
  *     @rotation.setter             # <<<<<<<<<<<<<<
  *     def rotation(self, value):
@@ -10441,7 +10467,7 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_20scale(CYTHON_UNUSED PyObje
  *         if self.parent is None or not bool(self.parent.scale):
  *             self.localScale = value             # <<<<<<<<<<<<<<
  *         else:
- *             value / self.parent.scale
+ *             self.localScale = value / self.parent.scale
  */
     if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_localScale, __pyx_v_value) < 0) __PYX_ERR(0, 495, __pyx_L1_error)
 
@@ -10458,7 +10484,7 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_20scale(CYTHON_UNUSED PyObje
   /* "pyunity/core.py":497
  *             self.localScale = value
  *         else:
- *             value / self.parent.scale             # <<<<<<<<<<<<<<
+ *             self.localScale = value / self.parent.scale             # <<<<<<<<<<<<<<
  * 
  *     def ReparentTo(self, parent):
  */
@@ -10471,6 +10497,7 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_20scale(CYTHON_UNUSED PyObje
     __pyx_t_4 = __Pyx_PyNumber_Divide(__pyx_v_value, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 497, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_localScale, __pyx_t_4) < 0) __PYX_ERR(0, 497, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __pyx_L4:;
@@ -10500,7 +10527,7 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_20scale(CYTHON_UNUSED PyObje
 }
 
 /* "pyunity/core.py":499
- *             value / self.parent.scale
+ *             self.localScale = value / self.parent.scale
  * 
  *     def ReparentTo(self, parent):             # <<<<<<<<<<<<<<
  *         """
@@ -10709,7 +10736,7 @@ static PyObject *__pyx_pf_7pyunity_4core_9Transform_22ReparentTo(CYTHON_UNUSED P
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_n_s_parent, __pyx_v_parent) < 0) __PYX_ERR(0, 513, __pyx_L1_error)
 
   /* "pyunity/core.py":499
- *             value / self.parent.scale
+ *             self.localScale = value / self.parent.scale
  * 
  *     def ReparentTo(self, parent):             # <<<<<<<<<<<<<<
  *         """
@@ -16625,7 +16652,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__48, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_core_py, __pyx_n_s_position, 418, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 418, __pyx_L1_error)
 
   /* "pyunity/core.py":426
- *             return self.parent.position + self.localRotation.RotateVector(self.localPosition)
+ *             return self.parent.position + self.localRotation.RotateVector(self.localPosition) * self.parent.scale
  * 
  *     @position.setter             # <<<<<<<<<<<<<<
  *     def position(self, value):
@@ -16637,7 +16664,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_codeobj__51 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__50, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_core_py, __pyx_n_s_position, 426, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__51)) __PYX_ERR(0, 426, __pyx_L1_error)
 
   /* "pyunity/core.py":438
- *                 value - self.parent.position)
+ *                 value / self.scale - self.parent.position)
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def rotation(self):
@@ -16649,7 +16676,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_codeobj__53 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__52, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_core_py, __pyx_n_s_rotation, 438, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__53)) __PYX_ERR(0, 438, __pyx_L1_error)
 
   /* "pyunity/core.py":446
- *             return self.localRotation * self.parent.rotation
+ *             return self.parent.rotation * self.localRotation
  * 
  *     @rotation.setter             # <<<<<<<<<<<<<<
  *     def rotation(self, value):
@@ -16733,7 +16760,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_codeobj__67 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__66, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_core_py, __pyx_n_s_scale, 489, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__67)) __PYX_ERR(0, 489, __pyx_L1_error)
 
   /* "pyunity/core.py":499
- *             value / self.parent.scale
+ *             self.localScale = value / self.parent.scale
  * 
  *     def ReparentTo(self, parent):             # <<<<<<<<<<<<<<
  *         """
@@ -18321,7 +18348,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
   /* "pyunity/core.py":426
- *             return self.parent.position + self.localRotation.RotateVector(self.localPosition)
+ *             return self.parent.position + self.localRotation.RotateVector(self.localPosition) * self.parent.scale
  * 
  *     @position.setter             # <<<<<<<<<<<<<<
  *     def position(self, value):
@@ -18364,7 +18391,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
   /* "pyunity/core.py":438
- *                 value - self.parent.position)
+ *                 value / self.scale - self.parent.position)
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def rotation(self):
@@ -18379,7 +18406,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
   /* "pyunity/core.py":446
- *             return self.localRotation * self.parent.rotation
+ *             return self.parent.rotation * self.localRotation
  * 
  *     @rotation.setter             # <<<<<<<<<<<<<<
  *     def rotation(self, value):
@@ -18596,7 +18623,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
   /* "pyunity/core.py":499
- *             value / self.parent.scale
+ *             self.localScale = value / self.parent.scale
  * 
  *     def ReparentTo(self, parent):             # <<<<<<<<<<<<<<
  *         """
