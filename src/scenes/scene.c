@@ -5,7 +5,7 @@
     "distutils": {
         "name": "pyunity.scenes.scene",
         "sources": [
-            "D:\\RayChen2\\Ray's docs and txts...anythin!\\python\\share\\pyunity\\pyunity\\scenes\\scene.py"
+            "C:\\Ray-Data\\pyunity\\pyunity\\scenes\\scene.py"
         ]
     },
     "module_name": "pyunity.scenes.scene"
@@ -1947,7 +1947,6 @@ static const char __pyx_k_vbo[] = "vbo";
 static const char __pyx_k_Bare[] = "Bare";
 static const char __pyx_k_Init[] = "Init";
 static const char __pyx_k_List[] = "List";
-static const char __pyx_k_Loop[] = "Loop";
 static const char __pyx_k_Play[] = "Play";
 static const char __pyx_k_Step[] = "Step";
 static const char __pyx_k_WARN[] = "WARN";
@@ -1958,6 +1957,7 @@ static const char __pyx_k_done[] = "done";
 static const char __pyx_k_hmax[] = "hmax";
 static const char __pyx_k_hmin[] = "hmin";
 static const char __pyx_k_init[] = "__init__";
+static const char __pyx_k_loop[] = "loop";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_math[] = "math";
 static const char __pyx_k_maxX[] = "maxX";
@@ -2072,13 +2072,13 @@ static const char __pyx_k_AudioSource[] = "AudioSource";
 static const char __pyx_k_CollManager[] = "CollManager";
 static const char __pyx_k_FixedUpdate[] = "FixedUpdate";
 static const char __pyx_k_Main_Camera[] = "Main Camera";
-static const char __pyx_k_PlayOnStart[] = "PlayOnStart";
 static const char __pyx_k_Scene_Start[] = "Scene.Start";
 static const char __pyx_k_collManager[] = "collManager";
 static const char __pyx_k_faceCulling[] = "faceCulling";
 static const char __pyx_k_gameObjects[] = "gameObjects";
 static const char __pyx_k_gen_buffers[] = "gen_buffers";
 static const char __pyx_k_has_started[] = "\" has started";
+static const char __pyx_k_playOnStart[] = "playOnStart";
 static const char __pyx_k_AddComponent[] = "AddComponent";
 static const char __pyx_k_GL_CULL_FACE[] = "GL_CULL_FACE";
 static const char __pyx_k_GetComponent[] = "GetComponent";
@@ -2183,7 +2183,6 @@ static PyObject *__pyx_n_u_Light;
 static PyObject *__pyx_n_s_List;
 static PyObject *__pyx_n_s_LogLine;
 static PyObject *__pyx_n_s_Logger;
-static PyObject *__pyx_n_s_Loop;
 static PyObject *__pyx_kp_u_Main_Camera;
 static PyObject *__pyx_n_s_Maintain;
 static PyObject *__pyx_n_s_MeshRenderer;
@@ -2195,7 +2194,6 @@ static PyObject *__pyx_n_s_OpenGL_GL;
 static PyObject *__pyx_n_u_PYUNITY_INTERACTIVE;
 static PyObject *__pyx_kp_u_Physics_is;
 static PyObject *__pyx_n_s_Play;
-static PyObject *__pyx_n_s_PlayOnStart;
 static PyObject *__pyx_n_s_PyUnityException;
 static PyObject *__pyx_n_s_Remove;
 static PyObject *__pyx_kp_u_Removing_Main_Camera_from_scene;
@@ -2301,6 +2299,7 @@ static PyObject *__pyx_n_s_lastRot;
 static PyObject *__pyx_n_s_light;
 static PyObject *__pyx_n_s_localPosition;
 static PyObject *__pyx_n_s_logger;
+static PyObject *__pyx_n_s_loop;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_mainCamera;
 static PyObject *__pyx_n_s_math;
@@ -2326,6 +2325,7 @@ static PyObject *__pyx_n_u_on;
 static PyObject *__pyx_n_s_os;
 static PyObject *__pyx_n_s_parent;
 static PyObject *__pyx_n_s_physics;
+static PyObject *__pyx_n_s_playOnStart;
 static PyObject *__pyx_n_s_pos;
 static PyObject *__pyx_n_s_position;
 static PyObject *__pyx_n_s_prepare;
@@ -2502,7 +2502,6 @@ typedef struct {
   PyObject *__pyx_n_s_List;
   PyObject *__pyx_n_s_LogLine;
   PyObject *__pyx_n_s_Logger;
-  PyObject *__pyx_n_s_Loop;
   PyObject *__pyx_kp_u_Main_Camera;
   PyObject *__pyx_n_s_Maintain;
   PyObject *__pyx_n_s_MeshRenderer;
@@ -2514,7 +2513,6 @@ typedef struct {
   PyObject *__pyx_n_u_PYUNITY_INTERACTIVE;
   PyObject *__pyx_kp_u_Physics_is;
   PyObject *__pyx_n_s_Play;
-  PyObject *__pyx_n_s_PlayOnStart;
   PyObject *__pyx_n_s_PyUnityException;
   PyObject *__pyx_n_s_Remove;
   PyObject *__pyx_kp_u_Removing_Main_Camera_from_scene;
@@ -2620,6 +2618,7 @@ typedef struct {
   PyObject *__pyx_n_s_light;
   PyObject *__pyx_n_s_localPosition;
   PyObject *__pyx_n_s_logger;
+  PyObject *__pyx_n_s_loop;
   PyObject *__pyx_n_s_main;
   PyObject *__pyx_n_s_mainCamera;
   PyObject *__pyx_n_s_math;
@@ -2645,6 +2644,7 @@ typedef struct {
   PyObject *__pyx_n_s_os;
   PyObject *__pyx_n_s_parent;
   PyObject *__pyx_n_s_physics;
+  PyObject *__pyx_n_s_playOnStart;
   PyObject *__pyx_n_s_pos;
   PyObject *__pyx_n_s_position;
   PyObject *__pyx_n_s_prepare;
@@ -2811,7 +2811,6 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_List);
   Py_CLEAR(clear_module_state->__pyx_n_s_LogLine);
   Py_CLEAR(clear_module_state->__pyx_n_s_Logger);
-  Py_CLEAR(clear_module_state->__pyx_n_s_Loop);
   Py_CLEAR(clear_module_state->__pyx_kp_u_Main_Camera);
   Py_CLEAR(clear_module_state->__pyx_n_s_Maintain);
   Py_CLEAR(clear_module_state->__pyx_n_s_MeshRenderer);
@@ -2823,7 +2822,6 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_u_PYUNITY_INTERACTIVE);
   Py_CLEAR(clear_module_state->__pyx_kp_u_Physics_is);
   Py_CLEAR(clear_module_state->__pyx_n_s_Play);
-  Py_CLEAR(clear_module_state->__pyx_n_s_PlayOnStart);
   Py_CLEAR(clear_module_state->__pyx_n_s_PyUnityException);
   Py_CLEAR(clear_module_state->__pyx_n_s_Remove);
   Py_CLEAR(clear_module_state->__pyx_kp_u_Removing_Main_Camera_from_scene);
@@ -2929,6 +2927,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_light);
   Py_CLEAR(clear_module_state->__pyx_n_s_localPosition);
   Py_CLEAR(clear_module_state->__pyx_n_s_logger);
+  Py_CLEAR(clear_module_state->__pyx_n_s_loop);
   Py_CLEAR(clear_module_state->__pyx_n_s_main);
   Py_CLEAR(clear_module_state->__pyx_n_s_mainCamera);
   Py_CLEAR(clear_module_state->__pyx_n_s_math);
@@ -2954,6 +2953,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_os);
   Py_CLEAR(clear_module_state->__pyx_n_s_parent);
   Py_CLEAR(clear_module_state->__pyx_n_s_physics);
+  Py_CLEAR(clear_module_state->__pyx_n_s_playOnStart);
   Py_CLEAR(clear_module_state->__pyx_n_s_pos);
   Py_CLEAR(clear_module_state->__pyx_n_s_position);
   Py_CLEAR(clear_module_state->__pyx_n_s_prepare);
@@ -3107,7 +3107,6 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_List);
   Py_VISIT(traverse_module_state->__pyx_n_s_LogLine);
   Py_VISIT(traverse_module_state->__pyx_n_s_Logger);
-  Py_VISIT(traverse_module_state->__pyx_n_s_Loop);
   Py_VISIT(traverse_module_state->__pyx_kp_u_Main_Camera);
   Py_VISIT(traverse_module_state->__pyx_n_s_Maintain);
   Py_VISIT(traverse_module_state->__pyx_n_s_MeshRenderer);
@@ -3119,7 +3118,6 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_u_PYUNITY_INTERACTIVE);
   Py_VISIT(traverse_module_state->__pyx_kp_u_Physics_is);
   Py_VISIT(traverse_module_state->__pyx_n_s_Play);
-  Py_VISIT(traverse_module_state->__pyx_n_s_PlayOnStart);
   Py_VISIT(traverse_module_state->__pyx_n_s_PyUnityException);
   Py_VISIT(traverse_module_state->__pyx_n_s_Remove);
   Py_VISIT(traverse_module_state->__pyx_kp_u_Removing_Main_Camera_from_scene);
@@ -3225,6 +3223,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_light);
   Py_VISIT(traverse_module_state->__pyx_n_s_localPosition);
   Py_VISIT(traverse_module_state->__pyx_n_s_logger);
+  Py_VISIT(traverse_module_state->__pyx_n_s_loop);
   Py_VISIT(traverse_module_state->__pyx_n_s_main);
   Py_VISIT(traverse_module_state->__pyx_n_s_mainCamera);
   Py_VISIT(traverse_module_state->__pyx_n_s_math);
@@ -3250,6 +3249,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_os);
   Py_VISIT(traverse_module_state->__pyx_n_s_parent);
   Py_VISIT(traverse_module_state->__pyx_n_s_physics);
+  Py_VISIT(traverse_module_state->__pyx_n_s_playOnStart);
   Py_VISIT(traverse_module_state->__pyx_n_s_pos);
   Py_VISIT(traverse_module_state->__pyx_n_s_position);
   Py_VISIT(traverse_module_state->__pyx_n_s_prepare);
@@ -3400,7 +3400,6 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_List __pyx_mstate_global->__pyx_n_s_List
 #define __pyx_n_s_LogLine __pyx_mstate_global->__pyx_n_s_LogLine
 #define __pyx_n_s_Logger __pyx_mstate_global->__pyx_n_s_Logger
-#define __pyx_n_s_Loop __pyx_mstate_global->__pyx_n_s_Loop
 #define __pyx_kp_u_Main_Camera __pyx_mstate_global->__pyx_kp_u_Main_Camera
 #define __pyx_n_s_Maintain __pyx_mstate_global->__pyx_n_s_Maintain
 #define __pyx_n_s_MeshRenderer __pyx_mstate_global->__pyx_n_s_MeshRenderer
@@ -3412,7 +3411,6 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_u_PYUNITY_INTERACTIVE __pyx_mstate_global->__pyx_n_u_PYUNITY_INTERACTIVE
 #define __pyx_kp_u_Physics_is __pyx_mstate_global->__pyx_kp_u_Physics_is
 #define __pyx_n_s_Play __pyx_mstate_global->__pyx_n_s_Play
-#define __pyx_n_s_PlayOnStart __pyx_mstate_global->__pyx_n_s_PlayOnStart
 #define __pyx_n_s_PyUnityException __pyx_mstate_global->__pyx_n_s_PyUnityException
 #define __pyx_n_s_Remove __pyx_mstate_global->__pyx_n_s_Remove
 #define __pyx_kp_u_Removing_Main_Camera_from_scene __pyx_mstate_global->__pyx_kp_u_Removing_Main_Camera_from_scene
@@ -3518,6 +3516,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_light __pyx_mstate_global->__pyx_n_s_light
 #define __pyx_n_s_localPosition __pyx_mstate_global->__pyx_n_s_localPosition
 #define __pyx_n_s_logger __pyx_mstate_global->__pyx_n_s_logger
+#define __pyx_n_s_loop __pyx_mstate_global->__pyx_n_s_loop
 #define __pyx_n_s_main __pyx_mstate_global->__pyx_n_s_main
 #define __pyx_n_s_mainCamera __pyx_mstate_global->__pyx_n_s_mainCamera
 #define __pyx_n_s_math __pyx_mstate_global->__pyx_n_s_math
@@ -3543,6 +3542,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_os __pyx_mstate_global->__pyx_n_s_os
 #define __pyx_n_s_parent __pyx_mstate_global->__pyx_n_s_parent
 #define __pyx_n_s_physics __pyx_mstate_global->__pyx_n_s_physics
+#define __pyx_n_s_playOnStart __pyx_mstate_global->__pyx_n_s_playOnStart
 #define __pyx_n_s_pos __pyx_mstate_global->__pyx_n_s_pos
 #define __pyx_n_s_position __pyx_mstate_global->__pyx_n_s_position
 #define __pyx_n_s_prepare __pyx_mstate_global->__pyx_n_s_prepare
@@ -8712,7 +8712,7 @@ static PyObject *__pyx_pf_7pyunity_6scenes_5scene_5Scene_22start_scripts(CYTHON_
  *                 if isinstance(component, Behaviour):
  *                     component.Start()             # <<<<<<<<<<<<<<
  *                 elif isinstance(component, AudioSource):
- *                     if component.PlayOnStart:
+ *                     if component.playOnStart:
  */
         __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_component, __pyx_n_s_Start); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 296, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
@@ -8752,7 +8752,7 @@ static PyObject *__pyx_pf_7pyunity_6scenes_5scene_5Scene_22start_scripts(CYTHON_
  *                 if isinstance(component, Behaviour):
  *                     component.Start()
  *                 elif isinstance(component, AudioSource):             # <<<<<<<<<<<<<<
- *                     if component.PlayOnStart:
+ *                     if component.playOnStart:
  *                         component.Play()
  */
       __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_AudioSource); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
@@ -8765,11 +8765,11 @@ static PyObject *__pyx_pf_7pyunity_6scenes_5scene_5Scene_22start_scripts(CYTHON_
         /* "pyunity/scenes/scene.py":298
  *                     component.Start()
  *                 elif isinstance(component, AudioSource):
- *                     if component.PlayOnStart:             # <<<<<<<<<<<<<<
+ *                     if component.playOnStart:             # <<<<<<<<<<<<<<
  *                         component.Play()
  *                 elif isinstance(component, MeshRenderer) and component.mesh is not None:
  */
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_component, __pyx_n_s_PlayOnStart); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 298, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_component, __pyx_n_s_playOnStart); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 298, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 298, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -8777,7 +8777,7 @@ static PyObject *__pyx_pf_7pyunity_6scenes_5scene_5Scene_22start_scripts(CYTHON_
 
           /* "pyunity/scenes/scene.py":299
  *                 elif isinstance(component, AudioSource):
- *                     if component.PlayOnStart:
+ *                     if component.playOnStart:
  *                         component.Play()             # <<<<<<<<<<<<<<
  *                 elif isinstance(component, MeshRenderer) and component.mesh is not None:
  *                     mesh = component.mesh
@@ -8809,7 +8809,7 @@ static PyObject *__pyx_pf_7pyunity_6scenes_5scene_5Scene_22start_scripts(CYTHON_
           /* "pyunity/scenes/scene.py":298
  *                     component.Start()
  *                 elif isinstance(component, AudioSource):
- *                     if component.PlayOnStart:             # <<<<<<<<<<<<<<
+ *                     if component.playOnStart:             # <<<<<<<<<<<<<<
  *                         component.Play()
  *                 elif isinstance(component, MeshRenderer) and component.mesh is not None:
  */
@@ -8819,14 +8819,14 @@ static PyObject *__pyx_pf_7pyunity_6scenes_5scene_5Scene_22start_scripts(CYTHON_
  *                 if isinstance(component, Behaviour):
  *                     component.Start()
  *                 elif isinstance(component, AudioSource):             # <<<<<<<<<<<<<<
- *                     if component.PlayOnStart:
+ *                     if component.playOnStart:
  *                         component.Play()
  */
         goto __pyx_L8;
       }
 
       /* "pyunity/scenes/scene.py":300
- *                     if component.PlayOnStart:
+ *                     if component.playOnStart:
  *                         component.Play()
  *                 elif isinstance(component, MeshRenderer) and component.mesh is not None:             # <<<<<<<<<<<<<<
  *                     mesh = component.mesh
@@ -8982,7 +8982,7 @@ static PyObject *__pyx_pf_7pyunity_6scenes_5scene_5Scene_22start_scripts(CYTHON_
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
         /* "pyunity/scenes/scene.py":300
- *                     if component.PlayOnStart:
+ *                     if component.playOnStart:
  *                         component.Play()
  *                 elif isinstance(component, MeshRenderer) and component.mesh is not None:             # <<<<<<<<<<<<<<
  *                     mesh = component.mesh
@@ -9907,7 +9907,7 @@ static PyObject *__pyx_pf_7pyunity_6scenes_5scene_5Scene_26update_scripts(CYTHON
  *                 if isinstance(component, Behaviour):
  *                     component.Update(dt)             # <<<<<<<<<<<<<<
  *                 elif isinstance(component, AudioSource):
- *                     if component.Loop and component.PlayOnStart:
+ *                     if component.loop and component.playOnStart:
  */
         __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_component, __pyx_n_s_Update); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 342, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
@@ -9947,7 +9947,7 @@ static PyObject *__pyx_pf_7pyunity_6scenes_5scene_5Scene_26update_scripts(CYTHON
  *                 if isinstance(component, Behaviour):
  *                     component.Update(dt)
  *                 elif isinstance(component, AudioSource):             # <<<<<<<<<<<<<<
- *                     if component.Loop and component.PlayOnStart:
+ *                     if component.loop and component.playOnStart:
  *                         if component.channel and not component.channel.get_busy():
  */
       __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_AudioSource); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 343, __pyx_L1_error)
@@ -9960,11 +9960,11 @@ static PyObject *__pyx_pf_7pyunity_6scenes_5scene_5Scene_26update_scripts(CYTHON
         /* "pyunity/scenes/scene.py":344
  *                     component.Update(dt)
  *                 elif isinstance(component, AudioSource):
- *                     if component.Loop and component.PlayOnStart:             # <<<<<<<<<<<<<<
+ *                     if component.loop and component.playOnStart:             # <<<<<<<<<<<<<<
  *                         if component.channel and not component.channel.get_busy():
  *                             component.Play()
  */
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_component, __pyx_n_s_Loop); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 344, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_component, __pyx_n_s_loop); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 344, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_12 < 0))) __PYX_ERR(0, 344, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -9973,7 +9973,7 @@ static PyObject *__pyx_pf_7pyunity_6scenes_5scene_5Scene_26update_scripts(CYTHON
           __pyx_t_7 = __pyx_t_12;
           goto __pyx_L9_bool_binop_done;
         }
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_component, __pyx_n_s_PlayOnStart); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 344, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_component, __pyx_n_s_playOnStart); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 344, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __pyx_t_12 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_12 < 0))) __PYX_ERR(0, 344, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -9983,7 +9983,7 @@ static PyObject *__pyx_pf_7pyunity_6scenes_5scene_5Scene_26update_scripts(CYTHON
 
           /* "pyunity/scenes/scene.py":345
  *                 elif isinstance(component, AudioSource):
- *                     if component.Loop and component.PlayOnStart:
+ *                     if component.loop and component.playOnStart:
  *                         if component.channel and not component.channel.get_busy():             # <<<<<<<<<<<<<<
  *                             component.Play()
  * 
@@ -10030,7 +10030,7 @@ static PyObject *__pyx_pf_7pyunity_6scenes_5scene_5Scene_26update_scripts(CYTHON
           if (__pyx_t_7) {
 
             /* "pyunity/scenes/scene.py":346
- *                     if component.Loop and component.PlayOnStart:
+ *                     if component.loop and component.playOnStart:
  *                         if component.channel and not component.channel.get_busy():
  *                             component.Play()             # <<<<<<<<<<<<<<
  * 
@@ -10062,7 +10062,7 @@ static PyObject *__pyx_pf_7pyunity_6scenes_5scene_5Scene_26update_scripts(CYTHON
 
             /* "pyunity/scenes/scene.py":345
  *                 elif isinstance(component, AudioSource):
- *                     if component.Loop and component.PlayOnStart:
+ *                     if component.loop and component.playOnStart:
  *                         if component.channel and not component.channel.get_busy():             # <<<<<<<<<<<<<<
  *                             component.Play()
  * 
@@ -10072,7 +10072,7 @@ static PyObject *__pyx_pf_7pyunity_6scenes_5scene_5Scene_26update_scripts(CYTHON
           /* "pyunity/scenes/scene.py":344
  *                     component.Update(dt)
  *                 elif isinstance(component, AudioSource):
- *                     if component.Loop and component.PlayOnStart:             # <<<<<<<<<<<<<<
+ *                     if component.loop and component.playOnStart:             # <<<<<<<<<<<<<<
  *                         if component.channel and not component.channel.get_busy():
  *                             component.Play()
  */
@@ -10082,7 +10082,7 @@ static PyObject *__pyx_pf_7pyunity_6scenes_5scene_5Scene_26update_scripts(CYTHON
  *                 if isinstance(component, Behaviour):
  *                     component.Update(dt)
  *                 elif isinstance(component, AudioSource):             # <<<<<<<<<<<<<<
- *                     if component.Loop and component.PlayOnStart:
+ *                     if component.loop and component.playOnStart:
  *                         if component.channel and not component.channel.get_busy():
  */
       }
@@ -12092,7 +12092,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, __pyx_k_List, sizeof(__pyx_k_List), 0, 0, 1, 1},
   {0, __pyx_k_LogLine, sizeof(__pyx_k_LogLine), 0, 0, 1, 1},
   {0, __pyx_k_Logger, sizeof(__pyx_k_Logger), 0, 0, 1, 1},
-  {0, __pyx_k_Loop, sizeof(__pyx_k_Loop), 0, 0, 1, 1},
   {0, __pyx_k_Main_Camera, sizeof(__pyx_k_Main_Camera), 0, 1, 0, 0},
   {0, __pyx_k_Maintain, sizeof(__pyx_k_Maintain), 0, 0, 1, 1},
   {0, __pyx_k_MeshRenderer, sizeof(__pyx_k_MeshRenderer), 0, 0, 1, 1},
@@ -12104,7 +12103,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, __pyx_k_PYUNITY_INTERACTIVE, sizeof(__pyx_k_PYUNITY_INTERACTIVE), 0, 1, 0, 1},
   {0, __pyx_k_Physics_is, sizeof(__pyx_k_Physics_is), 0, 1, 0, 0},
   {0, __pyx_k_Play, sizeof(__pyx_k_Play), 0, 0, 1, 1},
-  {0, __pyx_k_PlayOnStart, sizeof(__pyx_k_PlayOnStart), 0, 0, 1, 1},
   {0, __pyx_k_PyUnityException, sizeof(__pyx_k_PyUnityException), 0, 0, 1, 1},
   {0, __pyx_k_Remove, sizeof(__pyx_k_Remove), 0, 0, 1, 1},
   {0, __pyx_k_Removing_Main_Camera_from_scene, sizeof(__pyx_k_Removing_Main_Camera_from_scene), 0, 1, 0, 0},
@@ -12210,6 +12208,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, __pyx_k_light, sizeof(__pyx_k_light), 0, 0, 1, 1},
   {0, __pyx_k_localPosition, sizeof(__pyx_k_localPosition), 0, 0, 1, 1},
   {0, __pyx_k_logger, sizeof(__pyx_k_logger), 0, 0, 1, 1},
+  {0, __pyx_k_loop, sizeof(__pyx_k_loop), 0, 0, 1, 1},
   {0, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {0, __pyx_k_mainCamera, sizeof(__pyx_k_mainCamera), 0, 0, 1, 1},
   {0, __pyx_k_math, sizeof(__pyx_k_math), 0, 0, 1, 1},
@@ -12235,6 +12234,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, __pyx_k_os, sizeof(__pyx_k_os), 0, 0, 1, 1},
   {0, __pyx_k_parent, sizeof(__pyx_k_parent), 0, 0, 1, 1},
   {0, __pyx_k_physics, sizeof(__pyx_k_physics), 0, 0, 1, 1},
+  {0, __pyx_k_playOnStart, sizeof(__pyx_k_playOnStart), 0, 0, 1, 1},
   {0, __pyx_k_pos, sizeof(__pyx_k_pos), 0, 0, 1, 1},
   {0, __pyx_k_position, sizeof(__pyx_k_position), 0, 0, 1, 1},
   {0, __pyx_k_prepare, sizeof(__pyx_k_prepare), 0, 0, 1, 1},
@@ -12323,7 +12323,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_List, __pyx_k_List, sizeof(__pyx_k_List), 0, 0, 1, 1},
   {&__pyx_n_s_LogLine, __pyx_k_LogLine, sizeof(__pyx_k_LogLine), 0, 0, 1, 1},
   {&__pyx_n_s_Logger, __pyx_k_Logger, sizeof(__pyx_k_Logger), 0, 0, 1, 1},
-  {&__pyx_n_s_Loop, __pyx_k_Loop, sizeof(__pyx_k_Loop), 0, 0, 1, 1},
   {&__pyx_kp_u_Main_Camera, __pyx_k_Main_Camera, sizeof(__pyx_k_Main_Camera), 0, 1, 0, 0},
   {&__pyx_n_s_Maintain, __pyx_k_Maintain, sizeof(__pyx_k_Maintain), 0, 0, 1, 1},
   {&__pyx_n_s_MeshRenderer, __pyx_k_MeshRenderer, sizeof(__pyx_k_MeshRenderer), 0, 0, 1, 1},
@@ -12335,7 +12334,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_u_PYUNITY_INTERACTIVE, __pyx_k_PYUNITY_INTERACTIVE, sizeof(__pyx_k_PYUNITY_INTERACTIVE), 0, 1, 0, 1},
   {&__pyx_kp_u_Physics_is, __pyx_k_Physics_is, sizeof(__pyx_k_Physics_is), 0, 1, 0, 0},
   {&__pyx_n_s_Play, __pyx_k_Play, sizeof(__pyx_k_Play), 0, 0, 1, 1},
-  {&__pyx_n_s_PlayOnStart, __pyx_k_PlayOnStart, sizeof(__pyx_k_PlayOnStart), 0, 0, 1, 1},
   {&__pyx_n_s_PyUnityException, __pyx_k_PyUnityException, sizeof(__pyx_k_PyUnityException), 0, 0, 1, 1},
   {&__pyx_n_s_Remove, __pyx_k_Remove, sizeof(__pyx_k_Remove), 0, 0, 1, 1},
   {&__pyx_kp_u_Removing_Main_Camera_from_scene, __pyx_k_Removing_Main_Camera_from_scene, sizeof(__pyx_k_Removing_Main_Camera_from_scene), 0, 1, 0, 0},
@@ -12441,6 +12439,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_light, __pyx_k_light, sizeof(__pyx_k_light), 0, 0, 1, 1},
   {&__pyx_n_s_localPosition, __pyx_k_localPosition, sizeof(__pyx_k_localPosition), 0, 0, 1, 1},
   {&__pyx_n_s_logger, __pyx_k_logger, sizeof(__pyx_k_logger), 0, 0, 1, 1},
+  {&__pyx_n_s_loop, __pyx_k_loop, sizeof(__pyx_k_loop), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_mainCamera, __pyx_k_mainCamera, sizeof(__pyx_k_mainCamera), 0, 0, 1, 1},
   {&__pyx_n_s_math, __pyx_k_math, sizeof(__pyx_k_math), 0, 0, 1, 1},
@@ -12466,6 +12465,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_os, __pyx_k_os, sizeof(__pyx_k_os), 0, 0, 1, 1},
   {&__pyx_n_s_parent, __pyx_k_parent, sizeof(__pyx_k_parent), 0, 0, 1, 1},
   {&__pyx_n_s_physics, __pyx_k_physics, sizeof(__pyx_k_physics), 0, 0, 1, 1},
+  {&__pyx_n_s_playOnStart, __pyx_k_playOnStart, sizeof(__pyx_k_playOnStart), 0, 0, 1, 1},
   {&__pyx_n_s_pos, __pyx_k_pos, sizeof(__pyx_k_pos), 0, 0, 1, 1},
   {&__pyx_n_s_position, __pyx_k_position, sizeof(__pyx_k_position), 0, 0, 1, 1},
   {&__pyx_n_s_prepare, __pyx_k_prepare, sizeof(__pyx_k_prepare), 0, 0, 1, 1},
@@ -12818,149 +12818,149 @@ static CYTHON_SMALL_CODE int __Pyx_InitGlobals(void) {
   if (__Pyx_InitString(__pyx_string_tab[39], &__pyx_n_s_List) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   if (__Pyx_InitString(__pyx_string_tab[40], &__pyx_n_s_LogLine) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   if (__Pyx_InitString(__pyx_string_tab[41], &__pyx_n_s_Logger) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[42], &__pyx_n_s_Loop) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[43], &__pyx_kp_u_Main_Camera) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[44], &__pyx_n_s_Maintain) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[45], &__pyx_n_s_MeshRenderer) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[46], &__pyx_kp_u_No_AudioListeners_found_audio_is) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[47], &__pyx_kp_u_No_tag_at_index) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[48], &__pyx_kp_u_No_tag_named) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[49], &__pyx_n_s_OpenGL) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[50], &__pyx_n_s_OpenGL_GL) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[51], &__pyx_n_u_PYUNITY_INTERACTIVE) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[52], &__pyx_kp_u_Physics_is) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[53], &__pyx_n_s_Play) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[54], &__pyx_n_s_PlayOnStart) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[55], &__pyx_n_s_PyUnityException) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[56], &__pyx_n_s_Remove) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[57], &__pyx_kp_u_Removing_Main_Camera_from_scene) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[58], &__pyx_n_s_Render) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[59], &__pyx_n_s_Resize) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[60], &__pyx_n_s_RotateVector) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[61], &__pyx_n_s_Scene) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[62], &__pyx_kp_u_Scene_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[63], &__pyx_n_s_Scene_Add) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[64], &__pyx_n_s_Scene_Bare) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[65], &__pyx_n_s_Scene_FindComponentByType) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[66], &__pyx_n_s_Scene_FindComponentsByType) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[67], &__pyx_n_s_Scene_FindGameObjectsByName) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[68], &__pyx_n_s_Scene_FindGameObjectsByTagName) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[69], &__pyx_n_s_Scene_FindGameObjectsByTagNumber) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[70], &__pyx_n_s_Scene_List) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[71], &__pyx_n_s_Scene_List_locals_lambda) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[72], &__pyx_n_s_Scene_Remove) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[73], &__pyx_n_s_Scene_Start) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[74], &__pyx_n_s_Scene___init) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[75], &__pyx_n_s_Scene_clean_up) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[76], &__pyx_n_s_Scene_inside_frustrum) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[77], &__pyx_n_s_Scene_no_interactive) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[78], &__pyx_n_s_Scene_start_scripts) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[79], &__pyx_n_s_Scene_start_scripts_locals_genex) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[80], &__pyx_n_s_Scene_update) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[81], &__pyx_n_s_Scene_update_scripts) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[82], &__pyx_n_s_Start) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[83], &__pyx_n_s_Step) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[84], &__pyx_n_s_Tag) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[85], &__pyx_kp_u_The_provided_GameObject_is_not_p) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[86], &__pyx_n_s_Update) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[87], &__pyx_n_s_Vector3) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[88], &__pyx_n_s_WARN) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[89], &__pyx_kp_u__2) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[90], &__pyx_n_s__4) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[91], &__pyx_n_s__41) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[92], &__pyx_n_s__5) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[93], &__pyx_n_s_append) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[94], &__pyx_n_s_args) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[95], &__pyx_n_s_asyncio_coroutines) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[96], &__pyx_n_s_audio) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[97], &__pyx_n_s_audioListener) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[98], &__pyx_n_s_audioListeners) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[99], &__pyx_n_s_channel) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[100], &__pyx_n_s_clean_up) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[101], &__pyx_n_s_cline_in_traceback) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[102], &__pyx_n_s_clock) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[103], &__pyx_n_s_close) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[104], &__pyx_n_s_cls) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[105], &__pyx_n_s_collManager) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[106], &__pyx_n_s_component) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[107], &__pyx_n_s_components) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[108], &__pyx_n_s_config) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[109], &__pyx_n_s_core) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[110], &__pyx_kp_u_create_a_new_tag_with_Tag_AddTa) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[111], &__pyx_n_s_dict) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[112], &__pyx_n_s_directionX) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[113], &__pyx_n_s_directionY) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[114], &__pyx_n_s_directionZ) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[115], &__pyx_kp_u_disable) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[116], &__pyx_n_s_doc) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[117], &__pyx_n_s_done) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[118], &__pyx_n_s_dot) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[119], &__pyx_n_s_dt) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[120], &__pyx_kp_u_enable) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[121], &__pyx_n_s_environ) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[122], &__pyx_n_s_errors) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[123], &__pyx_n_s_faceCulling) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[124], &__pyx_n_s_far) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[125], &__pyx_n_s_files) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[126], &__pyx_n_s_forward) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[127], &__pyx_kp_u_found) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[128], &__pyx_n_s_fov) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[129], &__pyx_n_s_fps) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[130], &__pyx_n_s_gameObject) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[131], &__pyx_n_s_gameObjects) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[132], &__pyx_kp_u_gc) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[133], &__pyx_n_s_gen_array) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[134], &__pyx_n_s_gen_buffers) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[135], &__pyx_n_s_genexpr) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[136], &__pyx_n_s_get_busy) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[137], &__pyx_n_s_gl) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[138], &__pyx_n_s_glClear) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[139], &__pyx_n_s_glEnable) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[140], &__pyx_kp_u_has_started) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[141], &__pyx_n_s_hmax) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[142], &__pyx_n_s_hmin) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[143], &__pyx_n_s_i) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[144], &__pyx_n_s_ibo) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[145], &__pyx_n_s_import) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[146], &__pyx_kp_u_in_scene) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[147], &__pyx_n_s_init) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[148], &__pyx_n_s_init_subclass) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[149], &__pyx_n_s_initializing) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[150], &__pyx_n_s_inside_frustrum) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[151], &__pyx_n_s_is_coroutine) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[152], &__pyx_kp_u_isenabled) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[153], &__pyx_n_s_key) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[154], &__pyx_n_s_lastFrame) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[155], &__pyx_n_s_lastPos) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[156], &__pyx_n_s_lastRot) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[157], &__pyx_n_s_light) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[158], &__pyx_n_s_localPosition) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[159], &__pyx_n_s_logger) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[160], &__pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[161], &__pyx_n_s_mainCamera) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[162], &__pyx_n_s_math) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[163], &__pyx_n_s_max) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[164], &__pyx_n_s_maxX) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[165], &__pyx_n_s_maxY) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[166], &__pyx_n_s_maxZ) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[167], &__pyx_n_s_mesh) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[168], &__pyx_n_s_metaclass) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[169], &__pyx_n_s_min) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[170], &__pyx_n_s_minX) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[171], &__pyx_n_s_minY) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[172], &__pyx_n_s_minZ) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[173], &__pyx_n_s_module) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[174], &__pyx_n_s_name) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[175], &__pyx_n_s_name_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[176], &__pyx_n_s_near) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[177], &__pyx_n_s_new) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[178], &__pyx_n_s_no_interactive) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[179], &__pyx_n_s_num) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[180], &__pyx_n_u_off) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[181], &__pyx_n_u_on) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[182], &__pyx_n_s_os) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[183], &__pyx_n_s_parent) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[184], &__pyx_n_s_physics) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[42], &__pyx_kp_u_Main_Camera) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[43], &__pyx_n_s_Maintain) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[44], &__pyx_n_s_MeshRenderer) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[45], &__pyx_kp_u_No_AudioListeners_found_audio_is) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[46], &__pyx_kp_u_No_tag_at_index) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[47], &__pyx_kp_u_No_tag_named) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[48], &__pyx_n_s_OpenGL) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[49], &__pyx_n_s_OpenGL_GL) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[50], &__pyx_n_u_PYUNITY_INTERACTIVE) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[51], &__pyx_kp_u_Physics_is) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[52], &__pyx_n_s_Play) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[53], &__pyx_n_s_PyUnityException) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[54], &__pyx_n_s_Remove) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[55], &__pyx_kp_u_Removing_Main_Camera_from_scene) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[56], &__pyx_n_s_Render) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[57], &__pyx_n_s_Resize) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[58], &__pyx_n_s_RotateVector) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[59], &__pyx_n_s_Scene) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[60], &__pyx_kp_u_Scene_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[61], &__pyx_n_s_Scene_Add) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[62], &__pyx_n_s_Scene_Bare) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[63], &__pyx_n_s_Scene_FindComponentByType) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[64], &__pyx_n_s_Scene_FindComponentsByType) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[65], &__pyx_n_s_Scene_FindGameObjectsByName) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[66], &__pyx_n_s_Scene_FindGameObjectsByTagName) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[67], &__pyx_n_s_Scene_FindGameObjectsByTagNumber) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[68], &__pyx_n_s_Scene_List) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[69], &__pyx_n_s_Scene_List_locals_lambda) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[70], &__pyx_n_s_Scene_Remove) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[71], &__pyx_n_s_Scene_Start) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[72], &__pyx_n_s_Scene___init) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[73], &__pyx_n_s_Scene_clean_up) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[74], &__pyx_n_s_Scene_inside_frustrum) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[75], &__pyx_n_s_Scene_no_interactive) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[76], &__pyx_n_s_Scene_start_scripts) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[77], &__pyx_n_s_Scene_start_scripts_locals_genex) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[78], &__pyx_n_s_Scene_update) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[79], &__pyx_n_s_Scene_update_scripts) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[80], &__pyx_n_s_Start) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[81], &__pyx_n_s_Step) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[82], &__pyx_n_s_Tag) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[83], &__pyx_kp_u_The_provided_GameObject_is_not_p) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[84], &__pyx_n_s_Update) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[85], &__pyx_n_s_Vector3) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[86], &__pyx_n_s_WARN) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[87], &__pyx_kp_u__2) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[88], &__pyx_n_s__4) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[89], &__pyx_n_s__41) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[90], &__pyx_n_s__5) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[91], &__pyx_n_s_append) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[92], &__pyx_n_s_args) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[93], &__pyx_n_s_asyncio_coroutines) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[94], &__pyx_n_s_audio) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[95], &__pyx_n_s_audioListener) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[96], &__pyx_n_s_audioListeners) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[97], &__pyx_n_s_channel) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[98], &__pyx_n_s_clean_up) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[99], &__pyx_n_s_cline_in_traceback) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[100], &__pyx_n_s_clock) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[101], &__pyx_n_s_close) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[102], &__pyx_n_s_cls) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[103], &__pyx_n_s_collManager) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[104], &__pyx_n_s_component) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[105], &__pyx_n_s_components) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[106], &__pyx_n_s_config) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[107], &__pyx_n_s_core) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[108], &__pyx_kp_u_create_a_new_tag_with_Tag_AddTa) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[109], &__pyx_n_s_dict) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[110], &__pyx_n_s_directionX) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[111], &__pyx_n_s_directionY) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[112], &__pyx_n_s_directionZ) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[113], &__pyx_kp_u_disable) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[114], &__pyx_n_s_doc) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[115], &__pyx_n_s_done) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[116], &__pyx_n_s_dot) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[117], &__pyx_n_s_dt) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[118], &__pyx_kp_u_enable) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[119], &__pyx_n_s_environ) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[120], &__pyx_n_s_errors) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[121], &__pyx_n_s_faceCulling) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[122], &__pyx_n_s_far) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[123], &__pyx_n_s_files) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[124], &__pyx_n_s_forward) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[125], &__pyx_kp_u_found) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[126], &__pyx_n_s_fov) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[127], &__pyx_n_s_fps) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[128], &__pyx_n_s_gameObject) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[129], &__pyx_n_s_gameObjects) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[130], &__pyx_kp_u_gc) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[131], &__pyx_n_s_gen_array) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[132], &__pyx_n_s_gen_buffers) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[133], &__pyx_n_s_genexpr) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[134], &__pyx_n_s_get_busy) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[135], &__pyx_n_s_gl) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[136], &__pyx_n_s_glClear) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[137], &__pyx_n_s_glEnable) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[138], &__pyx_kp_u_has_started) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[139], &__pyx_n_s_hmax) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[140], &__pyx_n_s_hmin) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[141], &__pyx_n_s_i) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[142], &__pyx_n_s_ibo) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[143], &__pyx_n_s_import) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[144], &__pyx_kp_u_in_scene) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[145], &__pyx_n_s_init) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[146], &__pyx_n_s_init_subclass) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[147], &__pyx_n_s_initializing) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[148], &__pyx_n_s_inside_frustrum) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[149], &__pyx_n_s_is_coroutine) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[150], &__pyx_kp_u_isenabled) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[151], &__pyx_n_s_key) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[152], &__pyx_n_s_lastFrame) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[153], &__pyx_n_s_lastPos) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[154], &__pyx_n_s_lastRot) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[155], &__pyx_n_s_light) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[156], &__pyx_n_s_localPosition) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[157], &__pyx_n_s_logger) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[158], &__pyx_n_s_loop) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[159], &__pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[160], &__pyx_n_s_mainCamera) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[161], &__pyx_n_s_math) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[162], &__pyx_n_s_max) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[163], &__pyx_n_s_maxX) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[164], &__pyx_n_s_maxY) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[165], &__pyx_n_s_maxZ) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[166], &__pyx_n_s_mesh) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[167], &__pyx_n_s_metaclass) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[168], &__pyx_n_s_min) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[169], &__pyx_n_s_minX) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[170], &__pyx_n_s_minY) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[171], &__pyx_n_s_minZ) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[172], &__pyx_n_s_module) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[173], &__pyx_n_s_name) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[174], &__pyx_n_s_name_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[175], &__pyx_n_s_near) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[176], &__pyx_n_s_new) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[177], &__pyx_n_s_no_interactive) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[178], &__pyx_n_s_num) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[179], &__pyx_n_u_off) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[180], &__pyx_n_u_on) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[181], &__pyx_n_s_os) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[182], &__pyx_n_s_parent) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[183], &__pyx_n_s_physics) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[184], &__pyx_n_s_playOnStart) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   if (__Pyx_InitString(__pyx_string_tab[185], &__pyx_n_s_pos) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   if (__Pyx_InitString(__pyx_string_tab[186], &__pyx_n_s_position) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   if (__Pyx_InitString(__pyx_string_tab[187], &__pyx_n_s_prepare) < 0) __PYX_ERR(0, 1, __pyx_L1_error);

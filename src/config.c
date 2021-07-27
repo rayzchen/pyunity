@@ -5,7 +5,7 @@
     "distutils": {
         "name": "pyunity.config",
         "sources": [
-            "D:\\RayChen2\\Ray's docs and txts...anythin!\\python\\share\\pyunity\\pyunity\\config.py"
+            "C:\\Ray-Data\\pyunity\\pyunity\\config.py"
         ]
     },
     "module_name": "pyunity.config"
@@ -2258,7 +2258,7 @@ if (!__Pyx_RefNanny) {
  * size = (800, 500)
  * fps = 60             # <<<<<<<<<<<<<<
  * faceCulling = True
- * audio: bool = True
+ * audio = True
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_fps, __pyx_int_60) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
 
@@ -2266,7 +2266,7 @@ if (!__Pyx_RefNanny) {
  * size = (800, 500)
  * fps = 60
  * faceCulling = True             # <<<<<<<<<<<<<<
- * audio: bool = True
+ * audio = True
  * windowProvider = None
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_faceCulling, Py_True) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
@@ -2274,7 +2274,7 @@ if (!__Pyx_RefNanny) {
   /* "pyunity/config.py":13
  * fps = 60
  * faceCulling = True
- * audio: bool = True             # <<<<<<<<<<<<<<
+ * audio = True             # <<<<<<<<<<<<<<
  * windowProvider = None
  * 
  */
@@ -2282,7 +2282,7 @@ if (!__Pyx_RefNanny) {
 
   /* "pyunity/config.py":14
  * faceCulling = True
- * audio: bool = True
+ * audio = True
  * windowProvider = None             # <<<<<<<<<<<<<<
  * 
  * Logger.LogLine(Logger.DEBUG, "Loaded config")
