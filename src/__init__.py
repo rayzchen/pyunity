@@ -150,6 +150,7 @@ from .audio import *
 from .core import *
 from . import input as Input  # lgtm[py/import-own-module]
 from . import loader as Loader  # lgtm[py/import-own-module]
+from .loader import Primitives  # lgtm[py/import-own-module]
 from .input import KeyCode, KeyState
 from .physics import *
 from .errors import *
@@ -175,10 +176,10 @@ __all__ = ["AABBoxCollider", "AudioClip", "AudioListener", "AudioSource",
            "Component", "ComponentException", "File", "GameObject",
            "GameObjectException", "Input", "KeyCode", "KeyState",
            "Light", "Loader", "Logger", "Material", "Mesh", "MeshRenderer",
-           "PhysicMaterial", "Prefab", "Project", "PyUnityException",
-           "Quaternion", "Rigidbody", "SceneManager", "ShowInInspector",
-           "SphereCollider", "Tag", "Texture2D", "Transform",
-           "Vector3", "infinity"]
+           "PhysicMaterial", "Prefab", "Primitives", "Project",
+           "PyUnityException", "Quaternion", "Rigidbody", "SceneManager",
+           "ShowInInspector", "SphereCollider", "Tag", "Texture2D",
+           "Transform", "Vector3", "infinity"]
 # __all__ ends here
 
 if "PYUNITY_TESTING" not in os.environ:
