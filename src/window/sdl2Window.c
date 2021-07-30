@@ -2421,7 +2421,7 @@ static PyObject *__pyx_pf_7pyunity_6window_10sdl2Window_6Window___init__(CYTHON_
  *         self.context = sdl2.SDL_GL_CreateContext(self.screen)
  * 
  *         renderer = sdl2.SDL_CreateRenderer(self.screen, -1, 0)             # <<<<<<<<<<<<<<
- *         sdl2.SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255)
+ *         sdl2.SDL_SetRenderDrawRGB(renderer, 0, 0, 0, 255)
  *         sdl2.SDL_RenderClear(renderer)
  */
   __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_sdl2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 36, __pyx_L1_error)
@@ -2487,7 +2487,7 @@ static PyObject *__pyx_pf_7pyunity_6window_10sdl2Window_6Window___init__(CYTHON_
   /* "pyunity/window/sdl2Window.py":37
  * 
  *         renderer = sdl2.SDL_CreateRenderer(self.screen, -1, 0)
- *         sdl2.SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255)             # <<<<<<<<<<<<<<
+ *         sdl2.SDL_SetRenderDrawRGB(renderer, 0, 0, 0, 255)             # <<<<<<<<<<<<<<
  *         sdl2.SDL_RenderClear(renderer)
  *         sdl2.SDL_RenderPresent(renderer)
  */
@@ -2554,7 +2554,7 @@ static PyObject *__pyx_pf_7pyunity_6window_10sdl2Window_6Window___init__(CYTHON_
 
   /* "pyunity/window/sdl2Window.py":38
  *         renderer = sdl2.SDL_CreateRenderer(self.screen, -1, 0)
- *         sdl2.SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255)
+ *         sdl2.SDL_SetRenderDrawRGB(renderer, 0, 0, 0, 255)
  *         sdl2.SDL_RenderClear(renderer)             # <<<<<<<<<<<<<<
  *         sdl2.SDL_RenderPresent(renderer)
  * 
@@ -2582,7 +2582,7 @@ static PyObject *__pyx_pf_7pyunity_6window_10sdl2Window_6Window___init__(CYTHON_
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
   /* "pyunity/window/sdl2Window.py":39
- *         sdl2.SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255)
+ *         sdl2.SDL_SetRenderDrawRGB(renderer, 0, 0, 0, 255)
  *         sdl2.SDL_RenderClear(renderer)
  *         sdl2.SDL_RenderPresent(renderer)             # <<<<<<<<<<<<<<
  * 

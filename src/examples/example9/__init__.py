@@ -15,7 +15,7 @@ def main():
         os.path.dirname(os.path.abspath(__file__)), "logo.png"))
     renderer = cube.AddComponent(MeshRenderer)
     renderer.mesh = Mesh.cube(2)
-    renderer.mat = Material(Color(255, 255, 255), texture)
+    renderer.mat = Material(RGB(255, 255, 255), texture)
     cube.AddComponent(Rotator)
 
     scene.Add(cube)

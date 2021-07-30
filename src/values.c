@@ -1240,7 +1240,7 @@ static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_repr[] = "__repr__";
 static const char __pyx_k_self[] = "self";
 static const char __pyx_k_test[] = "__test__";
-static const char __pyx_k_Color[] = "Color(";
+static const char __pyx_k_Color[] = "RGB(";
 static const char __pyx_k_color[] = "color";
 static const char __pyx_k_other[] = "other";
 static const char __pyx_k_split[] = "split";
@@ -1768,7 +1768,7 @@ static PyObject *__pyx_pf_7pyunity_6values_5Color_2__truediv__(CYTHON_UNUSED PyO
  *         return self.r / other, self.g / other, self.b / other
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
- *         return "Color(" + self.to_string() + ")"
+ *         return "RGB(" + self.to_string() + ")"
  *     __str__ = __repr__
  */
 
@@ -1800,7 +1800,7 @@ static PyObject *__pyx_pf_7pyunity_6values_5Color_4__repr__(CYTHON_UNUSED PyObje
   /* "pyunity/values.py":44
  * 
  *     def __repr__(self):
- *         return "Color(" + self.to_string() + ")"             # <<<<<<<<<<<<<<
+ *         return "RGB(" + self.to_string() + ")"             # <<<<<<<<<<<<<<
  *     __str__ = __repr__
  * 
  */
@@ -1836,7 +1836,7 @@ static PyObject *__pyx_pf_7pyunity_6values_5Color_4__repr__(CYTHON_UNUSED PyObje
  *         return self.r / other, self.g / other, self.b / other
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
- *         return "Color(" + self.to_string() + ")"
+ *         return "RGB(" + self.to_string() + ")"
  *     __str__ = __repr__
  */
 
@@ -1994,7 +1994,7 @@ static PyObject *__pyx_pf_7pyunity_6values_5Color_6to_string(CYTHON_UNUSED PyObj
  * 
  *     @staticmethod
  *     def from_string(string):             # <<<<<<<<<<<<<<
- *         return Color(*list(map(int, string.split(", "))))
+ *         return RGB(*list(map(int, string.split(", "))))
  */
 
 /* Python wrapper */
@@ -2026,7 +2026,7 @@ static PyObject *__pyx_pf_7pyunity_6values_5Color_8from_string(CYTHON_UNUSED PyO
   /* "pyunity/values.py":52
  *     @staticmethod
  *     def from_string(string):
- *         return Color(*list(map(int, string.split(", "))))             # <<<<<<<<<<<<<<
+ *         return RGB(*list(map(int, string.split(", "))))             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_Color_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
@@ -2077,7 +2077,7 @@ static PyObject *__pyx_pf_7pyunity_6values_5Color_8from_string(CYTHON_UNUSED PyO
  * 
  *     @staticmethod
  *     def from_string(string):             # <<<<<<<<<<<<<<
- *         return Color(*list(map(int, string.split(", "))))
+ *         return RGB(*list(map(int, string.split(", "))))
  */
 
   /* function exit code */
@@ -2243,7 +2243,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         return self.r / other, self.g / other, self.b / other
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
- *         return "Color(" + self.to_string() + ")"
+ *         return "RGB(" + self.to_string() + ")"
  *     __str__ = __repr__
  */
   __pyx_tuple__11 = PyTuple_Pack(1, __pyx_n_s_self); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 43, __pyx_L1_error)
@@ -2267,7 +2267,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *     @staticmethod
  *     def from_string(string):             # <<<<<<<<<<<<<<
- *         return Color(*list(map(int, string.split(", "))))
+ *         return RGB(*list(map(int, string.split(", "))))
  */
   __pyx_tuple__15 = PyTuple_Pack(1, __pyx_n_s_string); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__15);
@@ -2643,7 +2643,7 @@ if (!__Pyx_RefNanny) {
  *         return self.r / other, self.g / other, self.b / other
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
- *         return "Color(" + self.to_string() + ")"
+ *         return "RGB(" + self.to_string() + ")"
  *     __str__ = __repr__
  */
   __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7pyunity_6values_5Color_5__repr__, 0, __pyx_n_s_Color___repr, NULL, __pyx_n_s_pyunity_values, __pyx_d, ((PyObject *)__pyx_codeobj__12)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
@@ -2653,7 +2653,7 @@ if (!__Pyx_RefNanny) {
 
   /* "pyunity/values.py":45
  *     def __repr__(self):
- *         return "Color(" + self.to_string() + ")"
+ *         return "RGB(" + self.to_string() + ")"
  *     __str__ = __repr__             # <<<<<<<<<<<<<<
  * 
  *     def to_string(self):
@@ -2684,7 +2684,7 @@ if (!__Pyx_RefNanny) {
  * 
  *     @staticmethod
  *     def from_string(string):             # <<<<<<<<<<<<<<
- *         return Color(*list(map(int, string.split(", "))))
+ *         return RGB(*list(map(int, string.split(", "))))
  */
   __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_7pyunity_6values_5Color_9from_string, __Pyx_CYFUNCTION_STATICMETHOD, __pyx_n_s_Color_from_string, NULL, __pyx_n_s_pyunity_values, __pyx_d, ((PyObject *)__pyx_codeobj__16)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -2694,7 +2694,7 @@ if (!__Pyx_RefNanny) {
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
  *     def from_string(string):
- *         return Color(*list(map(int, string.split(", "))))
+ *         return RGB(*list(map(int, string.split(", "))))
  */
   __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
