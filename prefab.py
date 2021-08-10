@@ -1,6 +1,7 @@
 import os
 import json
 class Test:
+    '''A test class to check if loading and storing are working'''
     def __init__(self) -> None:
         self.script='123456.py'
         self.mesh='(12,32,63,92),(12,96,31,35),(215,513,25,1.32),(15,31,2135,2)'
@@ -10,6 +11,7 @@ class Test:
 class Prefab:
     @staticmethod
     def Genrate(go:Test):
+        '''Storing go:GameObject into JSON file'''
         script=go.script
         mesh=go.mesh
         trans=go.transform
@@ -26,6 +28,7 @@ class Prefab:
             json_file.write(c_json)
     @staticmethod
     def Load(go:Test):
+        """Way to load the JSON file by using go:GameObject's name"""
         with open(f'{go.name}.json','r') as json_f:
             data=json.load(json_f)
 Prefab.Genrate(Test())
