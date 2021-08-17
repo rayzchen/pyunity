@@ -1,9 +1,8 @@
 from tkinter import *
 from os import *
-cu=getcwd()
+cw=chdir('Builds')
 root = Tk()
 root.geometry('1000x1000')
-img=PhotoImage(file='icon.png')
-root.iconphoto(img)
+root.wm_iconbitmap('Icon.ico')
 root.title("Build your game")
 root.mainloop()
