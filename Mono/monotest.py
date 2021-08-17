@@ -3,6 +3,6 @@ class Test(monobehaviour):
     def Start(self):
         self.name='Test'
         self.fixeddelay=10000
-    def FixedUpdate(self):
+    def Update(self):
         print('Asd')
 Test()

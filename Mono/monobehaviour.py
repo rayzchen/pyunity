@@ -7,6 +7,7 @@ class monobehaviour:
         self.Start()
         self.fpss=0
         self.callFixed()
+        self.updatec()
     def fps(self):
         a=0
         b=0
