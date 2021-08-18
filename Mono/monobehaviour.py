@@ -6,8 +6,17 @@ class monobehaviour:
         self.name=None
         self.Start()
         self.fpss=0
-        self.callFixed()
-        self.updatec()
+        
+        # self.thread1=Thread(target=self.callFixed)
+        # self.thread1.daemon=True
+        # self.thread1.start()
+        # self.thread2=Thread(target=self.callUpdate)
+        # self.thread2.setDaemon(True)
+        #self.thread2.start()
+        while True:
+            self.fps()
+            self.callUpdate()
+            self.callFixed()
     def fps(self):
         a=0
         b=0
@@ -17,18 +26,16 @@ class monobehaviour:
                 b+=1
         self.fpss=1/(time()-t1)
 
+    '''Callers start'''
+    def callUpdate(self):            
+        self.Update()
+        sleep(1/self.fpss)
+    def callFixed(self):
+        self.FixedUpdate()
+        sleep(self.fixeddelay/1000)
+    '''Callers end'''
     def Start(self):
         pass
-    def updatec(self):
-        while True:
-            self.Update()
-            sleep(1/self.fpss)
-    def display(self):
-        print(self.name)
-    def callFixed(self):
-        while True:
-            self.FixedUpdate()
-            sleep(self.fixeddelay/1000)
     def FixedUpdate(self):
         pass
     def Update(self):

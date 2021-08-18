@@ -4,5 +4,5 @@ class Test(monobehaviour):
         self.name='Test'
         self.fixeddelay=10000
     def Update(self):
-        print('Asd')
+        print('LOL')
 Test()
