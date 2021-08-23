@@ -3,6 +3,7 @@ from tkinter import filedialog
 from os import *
 cd=getcwd()
 print(cd)
+chdir('./Builds')
 root = Tk()
 root.geometry('500x200')
 root.title("Build your game")
@@ -16,11 +17,10 @@ class Builder:
         self.b.place(x=250,y=60)
         self.b2.place(x=100,y=60)
     def build(self):
-        pass
+        system('pyinstall --onefile test.pyw')
     def browse(self):
         read=filedialog.askopenfile(filetypes=(('PNG(.png)','*.png'),('JPEG(.jpeg)','*.jpeg'),('Icon(.ico)','*.ico')))
         self.Spath.set(read.name)
 Builder()
-cw=chdir('Builds')
 root.wm_iconbitmap('Icon.ico')
 root.mainloop()
