@@ -24,13 +24,8 @@ class Builder:
         self.b.place(x=250,y=60)
         self.b2.place(x=100,y=60)
 
-        #JSON importer
-        self.json_file=open('project_data.json','r')
-        self.json=json.load(self.json_file)
-        #Design
-        self.text=Text()
-        print(self.genrate_text())
-        #self.text.insert(END,f'{self.genrate_text()}')
+
+ 
     #Builds/converts the game into .exe file
     def build(self):
         for i,dirname,f in os.walk('.'):
@@ -51,9 +46,6 @@ class Builder:
             read=filedialog.askopenfile(filetypes=(('PNG(.png)','*.png'),('JPEG(.jpeg)','*.jpeg'),('Icon(.ico)','*.ico')))
             self.Spath.set(read.name)
         except AttributeError:pass
-    #It returns text to display in Text box
-    def genrate_text(self):
-        return f'Name:{self.json["name"]}\nId:{self.json["id"]}\nEngine:{self.json["Engine"]}\n'
 Builder()
 root.wm_iconbitmap('Icon.ico')
 root.mainloop()
