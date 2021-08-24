@@ -3,7 +3,6 @@ from tkinter import *
 from tkinter import filedialog
 import os
 import shutil
-from json import *
 from PIL import Image
 cd=os.getcwd()
 print(cd)
