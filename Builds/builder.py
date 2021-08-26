@@ -15,16 +15,16 @@ class Builder:
     def __init__(self) -> None:
         #Path variables
         self.Spath=StringVar(value=f'{os.path.join(cd,"icon.png")}')
-        self.Epath=Entry(width=60,textvariable=self.Spath).place(x=50,y=10)
-        self.Lpath=Label(text='Path:').place(x=30,y=10)
+        self.Epath=Entry(width=60,textvariable=self.Spath).place(x=50,y=40)
+        self.Lpath=Label(text='Path:').place(x=30,y=40)
         #Button variables
         self.b=Button(root,text='Done, build the game',command=self.build)
         self.b2=Button(root,text='Browse',command=self.browse)
         self.b.place(x=250,y=60)
         self.b2.place(x=100,y=60)
-
-
- 
+        #Design
+        self.un_click1=Button(text='Bruh') 
+        self.un_click1.pack()
     #Builds/converts the game into .exe file
     def build(self):
         for i,dirname,f in os.walk('.'):
