@@ -50,7 +50,7 @@ setup(
         "Programming Language :: Python :: 3.9",
     ],
     setup_requires=[
-        "cython",
+        "cython >= 3.0.0a2",
     ],
     install_requires=[
         "pyopengl",
