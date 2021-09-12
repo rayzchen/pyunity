@@ -1,4 +1,4 @@
-from pyunity import SceneManager, GameObject, Vector3, MeshRenderer, Mesh, Color, AABBoxCollider, Rigidbody, Material
+from pyunity import SceneManager, GameObject, Vector3, MeshRenderer, Mesh, RGB, AABBoxCollider, Rigidbody, Material
 
 def main():
     scene = SceneManager.AddScene("Scene")
@@ -33,7 +33,6 @@ def main():
     scene.Add(cube)
 
     SceneManager.LoadScene(scene)
-
 
 if __name__ == "__main__":
     main()

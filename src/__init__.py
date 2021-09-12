@@ -1,11 +1,13 @@
 """
-Version 0.7.1 (in development)
+Version 0.8.0 (in development)
 ==============================
-PyUnity is a Python implementation of the
-Unity Engine, written in C++. This is just
-a fun project and many features have been
-taken out to make it as easy as possible
-to create a scene and run it.
+PyUnity is a pure Python 3D Game Engine that
+was inspired by the structure of the Unity
+Game Engine. This does not mean that PyUnity
+are bindings for the UnityEngine. However,
+this project has been made to facilitate
+any programmer, beginner or advanced, novice
+or veteran.
 
 Installing
 ----------
@@ -46,7 +48,7 @@ This is the output with debugging::
     Trying GLFW as a window provider
     GLFW doesn't work, trying PySDL2
     Using window provider PySDL2
-    Loaded PyUnity version 0.7.1
+    Loaded PyUnity version 0.8.0
 
 If debugging is off, there is no output:
 
@@ -129,7 +131,7 @@ To run an example, import it like so:
     FreeGLUT doesn't work, trying GLFW
     GLFW doesn't work, trying PySDL2
     Using window provider PySDL2
-    Loaded PyUnity version 0.7.1
+    Loaded PyUnity version 0.8.0
     >>> main()
 
 Or from the command line::
@@ -144,46 +146,47 @@ create a new pull request.
 
 """
 
-import os
 from . import logger as Logger  # lgtm[py/import-own-module]
+from . import audio, core, gui, input, physics, errors, files, values
+__all__ = ["Logger", "Loader", "Window",
+           "Primitives", "Screen", "SceneManager", "Mesh"]
+__all__.extend(audio.__all__)
+__all__.extend(core.__all__)
+__all__.extend(gui.__all__)
+__all__.extend(input.__all__)
+__all__.extend(physics.__all__)
+__all__.extend(errors.__all__)
+__all__.extend(files.__all__)
+__all__.extend(values.__all__)
+
+import os
 from .audio import *
 from .core import *
-from . import input as Input  # lgtm[py/import-own-module]
+from .gui import *
 from . import loader as Loader  # lgtm[py/import-own-module]
+from . import window as Window  # lgtm[py/import-own-module]
 from .loader import Primitives  # lgtm[py/import-own-module]
-from .input import KeyCode, KeyState
+from .input import *
+from .render import Screen
 from .physics import *
 from .errors import *
 from .files import *
+from .values import *
 from .scenes import sceneManager as SceneManager
-from .quaternion import Quaternion
-from .vector3 import Vector3
 from .meshes import Mesh
 
-__version__ = "0.7.1"
+__version__ = "0.8.0"
 __copyright__ = "Copyright 2020-2021 Ray Chen"
 __email__ = "tankimarshal2@gmail.com"
 __license__ = "MIT License"
-__summary__ = "A Python implementation of the Unity Engine"
+__summary__ = "A pure Python 3D Game Engine that was inspired by the structure of the Unity Game Engine"
 __title__ = "pyunity"
 __uri__ = "https://pyunity.readthedocs.io/en/latest/"
 
-from . import config, window
-
-# __all__ starts here
-__all__ = ["AABBoxCollider", "AudioClip", "AudioListener", "AudioSource",
-           "Behaviour", "Clock", "CollManager", "Collider", "Color",
-           "Component", "ComponentException", "File", "GameObject",
-           "GameObjectException", "Input", "KeyCode", "KeyState",
-           "Light", "Loader", "Logger", "Material", "Mesh", "MeshRenderer",
-           "PhysicMaterial", "Prefab", "Primitives", "Project",
-           "PyUnityException", "Quaternion", "Rigidbody", "SceneManager",
-           "ShowInInspector", "SphereCollider", "Tag", "Texture2D",
-           "Transform", "Vector3", "infinity"]
-# __all__ ends here
+from . import config
 
 if "PYUNITY_TESTING" not in os.environ:
-    config.windowProvider = window.GetWindowProvider()
+    config.windowProvider = Window.GetWindowProvider()
 
 Logger.LogLine(Logger.DEBUG, "Loaded PyUnity version %s" % __version__)
 Logger.LogSpecial(Logger.INFO, Logger.RUNNING_TIME)

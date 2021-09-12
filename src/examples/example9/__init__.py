@@ -1,28 +1,33 @@
-from pyunity import Behaviour, Vector3, SceneManager, GameObject, Mesh, Material, Color, Texture2D, MeshRenderer
+from pyunity import *
 import os
 
-class Rotator(Behaviour):
+class Rotator2D(Behaviour):
+    rectTransform = ShowInInspector(RectTransform)
     def Update(self, dt):
-        self.transform.eulerAngles += Vector3(0, 90, 135) * dt
+        self.rectTransform.rotation += 180 * dt
+
+class Mover2D(Behaviour):
+    rectTransform = ShowInInspector(RectTransform)
+    speed = ShowInInspector(float, 200)
+    def Update(self, dt):
+        movement = Vector2(Input.GetAxis("Horizontal"), -
+                           Input.GetAxis("Vertical"))
+        self.rectTransform.offset.Move(movement * dt * self.speed)
 
 def main():
     scene = SceneManager.AddScene("Scene")
+    imgObject = GameObject("Image")
+    rectTransform = imgObject.AddComponent(RectTransform)
+    rectTransform.offset = RectOffset.Square(100)
+    imgObject.AddComponent(Mover2D).rectTransform = rectTransform
 
-    scene.mainCamera.transform.localPosition = Vector3(0, 0, -10)
+    img = imgObject.AddComponent(Image2D)
+    img.texture = Texture2D(os.path.join(os.path.dirname(
+        os.path.dirname(os.path.abspath(__file__))), "example8", "logo.png"))
+    imgObject.AddComponent(Rotator2D).rectTransform = rectTransform
+    scene.Add(imgObject)
 
-    cube = GameObject("Cube")
-    texture = Texture2D(os.path.join(
-        os.path.dirname(os.path.abspath(__file__)), "logo.png"))
-    renderer = cube.AddComponent(MeshRenderer)
-    renderer.mesh = Mesh.cube(2)
-    renderer.mat = Material(RGB(255, 255, 255), texture)
-    cube.AddComponent(Rotator)
-
-    scene.Add(cube)
-
-    scene.List()
     SceneManager.LoadScene(scene)
-
 
 if __name__ == "__main__":
     main()

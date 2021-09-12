@@ -1,4 +1,4 @@
-from pyunity import Behaviour, SceneManager, GameObject, Vector3, MeshRenderer, Mesh, Material, Color, ShowInInspector
+from pyunity import Behaviour, SceneManager, GameObject, Vector3, MeshRenderer, Mesh, Material, RGB, ShowInInspector
 
 class Rotator(Behaviour):
     a = ShowInInspector(int, 0)
@@ -20,7 +20,6 @@ def main():
 
     scene.List()
     SceneManager.LoadScene(scene)
-
 
 if __name__ == "__main__":
     main()
