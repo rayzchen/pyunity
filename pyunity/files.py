@@ -7,6 +7,7 @@ Also manages project structure.
 __all__ = ["Behaviour", "Texture2D", "Prefab",
            "File", "Project"]
 
+from inspect import FullArgSpec
 from OpenGL import GL as gl
 from PIL import Image
 from .values import Material, Color
@@ -216,6 +217,7 @@ class Texture2D:
             self.img = path_or_im
             self.img_data = self.img.tobytes()
         self.loaded = False
+        self.texture = None
 
     def load(self):
         """
@@ -224,7 +226,8 @@ class Texture2D:
 
         """
         width, height = self.img.size
-        self.texture = gl.glGenTextures(1)
+        if self.texture is None:
+            self.texture = gl.glGenTextures(1)
         gl.glBindTexture(gl.GL_TEXTURE_2D, self.texture)
         gl.glTexParameterf(
             gl.GL_TEXTURE_2D, gl.GL_TEXTURE_MAG_FILTER, gl.GL_LINEAR)
@@ -234,6 +237,12 @@ class Texture2D:
                         gl.GL_RGBA, gl.GL_UNSIGNED_BYTE, self.img_data)
         gl.glEnable(gl.GL_TEXTURE_2D)
         self.loaded = True
+    
+    def setImg(self, im):
+        self.loaded = False
+        self.img = im
+        self.path = None
+        self.img_data = self.img.tobytes()
 
     def use(self):
         """
@@ -245,10 +254,6 @@ class Texture2D:
             self.load()
         gl.glActiveTexture(gl.GL_TEXTURE0)
         gl.glBindTexture(gl.GL_TEXTURE_2D, self.texture)
-    
-    def __del__(self):
-        if self.loaded:
-            gl.glDeleteTextures(1, self.texture)
 
 class Skybox:
     names = ["right.jpg", "left.jpg", "top.jpg",
@@ -275,8 +280,6 @@ class Skybox:
         gl.glBindTexture(gl.GL_TEXTURE_CUBE_MAP, self.texture)
 
         loaded = len(self.images)
-        if not loaded:
-            print("loading")
         for i, name in enumerate(Skybox.names):
             if loaded:
                 img = self.images[i]
