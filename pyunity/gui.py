@@ -120,6 +120,7 @@ class RectTransform(Component):
 
 class Image2D(Component):
     texture = ShowInInspector(Texture2D)
+    depth = ShowInInspector(float, 0.0)
     def __init__(self, transform):
         super(Image2D, self).__init__(transform)
         self.rectTransform = self.GetComponent(RectTransform)
@@ -135,23 +136,37 @@ buttonDefault = Texture2D(os.path.join(os.path.abspath(
 
 class Gui:
     @classmethod
-    def MakeButton(cls, name, scene, texture2d=None):
-        if texture2d is None:
-            texture2d = buttonDefault
+    def MakeButton(cls, name, scene, text="Button", font=None, color=None, texture=None):
+        if texture is None:
+            texture = buttonDefault
         
         button = GameObject(name)
         transform = button.AddComponent(RectTransform)
-
-        texture = GameObject("Button", button)
-        transform2 = texture.AddComponent(RectTransform)
-        transform2.anchors = RectAnchors(Vector2.zero(), Vector2.one())
-        img = texture.AddComponent(Image2D)
-        img.texture = texture2d
         buttonComponent = button.AddComponent(Button)
 
+        textureObj = GameObject("Button", button)
+        transform2 = textureObj.AddComponent(RectTransform)
+        transform2.anchors = RectAnchors(Vector2.zero(), Vector2.one())
+        img = textureObj.AddComponent(Image2D)
+        img.texture = texture
+
+        textObj = GameObject("Text", button)
+        transform3 = textObj.AddComponent(RectTransform)
+        transform3.anchors = RectAnchors(Vector2.zero(), Vector2.one())
+
+        textComp = textObj.AddComponent(Text)
+        textComp.text = text
+        if font is None:
+            font = FontLoader.LoadFont("Arial", 16)
+        textComp.font = font
+        if color is None:
+            color = RGB(0, 0, 0)
+        textComp.color = color
+        textComp.centeredX = True
+
         scene.Add(button)
-        scene.Add(texture)
-        return transform, buttonComponent
+        scene.Add(textureObj)
+        return transform, buttonComponent, textComp
 
 class _FontLoader:
     fonts = {}
@@ -212,6 +227,9 @@ class Text(Component):
     font = ShowInInspector(Font, FontLoader.LoadFont("Arial", 24))
     text = ShowInInspector(str, "Text")
     color = ShowInInspector(Color)
+    depth = ShowInInspector(float, 0.1)
+    centeredX = ShowInInspector(bool, False)
+    centeredY = ShowInInspector(bool, True)
     def __init__(self, transform):
         super(Text, self).__init__(transform)
         self.rect = None
@@ -229,11 +247,24 @@ class Text(Component):
         im = Image.new("RGBA", tuple(size), (255, 255, 255, 0))
 
         draw = ImageDraw.Draw(im)
-        draw.text((0, 0), self.text, font=self.font._font,
+        width, height = draw.textsize(self.text, font=self.font._font)
+        if self.centeredX:
+            offX = (size.x - width) // 2
+        else:
+            offX = 0
+        if self.centeredY:
+            offY = (size.y - height) // 2
+        else:
+            offY = 0
+        
+        draw.text((offX, offY), self.text, font=self.font._font,
             fill=tuple(self.color))
+        if self.texture is not None:
+            del self.texture
         self.texture = Texture2D(im)
     
     def __setattr__(self, name, value):
         super(Text, self).__setattr__(name, value)
         if name in ["font", "text", "color"]:
-            self.GenTexture()
+            if self.gameObject.scene is not None:
+                self.GenTexture()

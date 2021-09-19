@@ -29,7 +29,7 @@ def main():
         os.path.dirname(os.path.abspath(__file__))), "example8", "logo.png"))
     scene.Add(imgObject)
 
-    rect, button = Gui.MakeButton("Button", scene)
+    rect, button, text = Gui.MakeButton("Button", scene, "Click me")
     rect.transform.ReparentTo(canvas.transform)
     rect.offset = RectOffset(Vector2(100, 70), Vector2(250, 100))
     button.callback = lambda: print("Clicked")

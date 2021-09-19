@@ -99,27 +99,27 @@ class Shader:
         shaders[name] = self
 
     def compile(self):
-        self.vertexShader = gl.glCreateShader(gl.GL_VERTEX_SHADER)
-        gl.glShaderSource(self.vertexShader, self.vertex, 1, None)
-        gl.glCompileShader(self.vertexShader)
+        vertexShader = gl.glCreateShader(gl.GL_VERTEX_SHADER)
+        gl.glShaderSource(vertexShader, self.vertex, 1, None)
+        gl.glCompileShader(vertexShader)
 
-        success = gl.glGetShaderiv(self.vertexShader, gl.GL_COMPILE_STATUS)
+        success = gl.glGetShaderiv(vertexShader, gl.GL_COMPILE_STATUS)
         if not success:
-            log = gl.glGetShaderInfoLog(self.vertexShader)
+            log = gl.glGetShaderInfoLog(vertexShader)
             raise PyUnityException(log)
 
-        self.fragShader = gl.glCreateShader(gl.GL_FRAGMENT_SHADER)
-        gl.glShaderSource(self.fragShader, self.frag, 1, None)
-        gl.glCompileShader(self.fragShader)
+        fragShader = gl.glCreateShader(gl.GL_FRAGMENT_SHADER)
+        gl.glShaderSource(fragShader, self.frag, 1, None)
+        gl.glCompileShader(fragShader)
 
-        success = gl.glGetShaderiv(self.fragShader, gl.GL_COMPILE_STATUS)
+        success = gl.glGetShaderiv(fragShader, gl.GL_COMPILE_STATUS)
         if not success:
-            log = gl.glGetShaderInfoLog(self.fragShader)
+            log = gl.glGetShaderInfoLog(fragShader)
             raise PyUnityException(log)
 
         self.program = gl.glCreateProgram()
-        gl.glAttachShader(self.program, self.vertexShader)
-        gl.glAttachShader(self.program, self.fragShader)
+        gl.glAttachShader(self.program, vertexShader)
+        gl.glAttachShader(self.program, fragShader)
         gl.glLinkProgram(self.program)
 
         success = gl.glGetProgramiv(self.program, gl.GL_LINK_STATUS)
@@ -127,8 +127,8 @@ class Shader:
             log = gl.glGetProgramInfoLog(self.program)
             raise PyUnityException(log)
 
-        gl.glDeleteShader(self.vertexShader)
-        gl.glDeleteShader(self.fragShader)
+        gl.glDeleteShader(vertexShader)
+        gl.glDeleteShader(fragShader)
         self.compiled = True
 
     @staticmethod
@@ -153,10 +153,18 @@ class Shader:
         location = gl.glGetUniformLocation(self.program, var)
         gl.glUniform1i(location, val)
 
+    def setFloat(self, var, val):
+        location = gl.glGetUniformLocation(self.program, var)
+        gl.glUniform1f(location, val)
+
     def use(self):
         if not self.compiled:
             self.compile()
         gl.glUseProgram(self.program)
+    
+    def __del__(self):
+        if self.compiled:
+            gl.glDeleteProgram(self.program)
 
 __dir = os.path.abspath(os.path.dirname(__file__))
 shaders: Dict[str, Shader] = dict()
@@ -362,6 +370,7 @@ class Camera(SingleComponent):
                 if renderer is not None and rectTransform is not None and renderer.texture is not None:
                     self.guiShader.setMat4(
                         b"model", self.get2DMatrix(rectTransform))
+                    self.guiShader.setFloat(b"depth", renderer.depth)
                     renderer.texture.use()
                     gl.glDrawArrays(gl.GL_QUADS, 0, 4)
                 
@@ -369,6 +378,7 @@ class Camera(SingleComponent):
                 if text is not None:
                     self.guiShader.setMat4(
                         b"model", self.get2DMatrix(rectTransform))
+                    self.guiShader.setFloat(b"depth", text.depth)
                     if text.texture is None:
                         text.GenTexture()
                     text.texture.use()

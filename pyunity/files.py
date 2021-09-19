@@ -245,6 +245,10 @@ class Texture2D:
             self.load()
         gl.glActiveTexture(gl.GL_TEXTURE0)
         gl.glBindTexture(gl.GL_TEXTURE_2D, self.texture)
+    
+    def __del__(self):
+        if self.loaded:
+            gl.glDeleteTextures(1, self.texture)
 
 class Skybox:
     names = ["right.jpg", "left.jpg", "top.jpg",
@@ -313,6 +317,10 @@ class Skybox:
         if not self.compiled:
             self.compile()
         gl.glBindTexture(gl.GL_TEXTURE_CUBE_MAP, self.texture)
+    
+    def __del__(self):
+        if self.compiled:
+            gl.glDeleteTextures(1, self.texture)
 
 class Prefab:
     def __init__(self, gameObject, components):
