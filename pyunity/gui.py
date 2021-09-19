@@ -11,6 +11,7 @@ from PIL import Image, ImageDraw, ImageFont
 from types import FunctionType
 import os
 import sys
+import enum
 
 class Canvas(Component):
     def Update(self, updated):
@@ -162,7 +163,7 @@ class Gui:
         if color is None:
             color = RGB(0, 0, 0)
         textComp.color = color
-        textComp.centeredX = True
+        textComp.centeredX = TextAlign.Center
 
         scene.Add(button)
         scene.Add(textureObj)
@@ -234,13 +235,18 @@ class Font:
     def __reduce__(self):
         return (FontLoader.LoadFont, (self.name, self.size))
 
+class TextAlign(enum.IntEnum):
+    Left = enum.auto()
+    Center = enum.auto()
+    Right = enum.auto()
+
 class Text(Component):
     font = ShowInInspector(Font, FontLoader.LoadFont("Arial", 24))
     text = ShowInInspector(str, "Text")
     color = ShowInInspector(Color)
     depth = ShowInInspector(float, 0.1)
-    centeredX = ShowInInspector(bool, False)
-    centeredY = ShowInInspector(bool, True)
+    centeredX = ShowInInspector(TextAlign, TextAlign.Left)
+    centeredY = ShowInInspector(TextAlign, TextAlign.Center)
     def __init__(self, transform):
         super(Text, self).__init__(transform)
         self.rect = None
@@ -259,14 +265,18 @@ class Text(Component):
 
         draw = ImageDraw.Draw(im)
         width, height = draw.textsize(self.text, font=self.font._font)
-        if self.centeredX:
+        if self.centeredX == TextAlign.Left:
+            offX = 0
+        elif self.centeredX == TextAlign.Center:
             offX = (size.x - width) // 2
         else:
-            offX = 0
-        if self.centeredY:
-            offY = (size.y - height) // 2
-        else:
+            offX = size.x - width
+        if self.centeredY == TextAlign.Left:
             offY = 0
+        elif self.centeredY == TextAlign.Center:
+            offY = (size.y - width) // 2
+        else:
+            offY = size.y - width
         
         draw.text((offX, offY), self.text, font=self.font._font,
             fill=tuple(self.color))
