@@ -9,7 +9,7 @@ from .values import Color, RGB, Vector3, Vector2, Quaternion, ImmutableStruct
 from .errors import PyUnityException
 from .core import ShowInInspector, SingleComponent
 from .files import Skybox, convert
-from . import config
+from . import config, Logger
 import glm
 import itertools
 import os
@@ -78,6 +78,7 @@ class Shader:
         self.vertex = vertex
         self.frag = frag
         self.compiled = False
+        self.name = name
         shaders[name] = self
 
     def compile(self):
@@ -120,6 +121,8 @@ class Shader:
         gl.glDeleteShader(vertexShader)
         gl.glDeleteShader(fragShader)
         self.compiled = True
+
+        Logger.LogLine(Logger.INFO, "Compiled shader", repr(self.name))
 
     @staticmethod
     def fromFolder(path, name):
@@ -213,11 +216,11 @@ class Shader:
 __dir = os.path.abspath(os.path.dirname(__file__))
 shaders: Dict[str, Shader] = dict()
 skyboxes: Dict[str, Skybox] = dict()
+skyboxes["Water"] = Skybox(os.path.join(
+    __dir, "shaders", "skybox", "textures"))
 Shader.fromFolder(os.path.join(__dir, "shaders", "standard"), "Standard")
 Shader.fromFolder(os.path.join(__dir, "shaders", "skybox"), "Skybox")
 Shader.fromFolder(os.path.join(__dir, "shaders", "gui"), "GUI")
-skyboxes["Water"] = Skybox(os.path.join(
-    __dir, "shaders", "skybox", "textures"))
 
 def compile_shaders():
     for shader in shaders.values():
@@ -436,17 +439,24 @@ class Camera(SingleComponent):
                     continue
                 gameObjects.append(gameObject)
                 rectTransform = gameObject.GetComponent(RectTransform)
+                if rectTransform is None:
+                    continue
+                
                 renderer = gameObject.GetComponent(Image2D)
                 text = gameObject.GetComponent(Text)
 
-                textures = []
-                if renderer is not None and rectTransform is not None and renderer.texture is not None:
-                    textures.append(renderer.texture)
+                renderers = []
+                if renderer is not None:
+                    renderers.append(renderer)
                 if text is not None:
-                    textures.append(text.texture)
+                    renderers.append(text)
+                    if text.texture is None:
+                        text.GenTexture()
                 
-                for texture in textures:
-                    texture.use()
+                for renderer in renderers:
+                    if renderer.texture is None:
+                        continue
+                    renderer.texture.use()
                     self.guiShader.setMat4(
                         b"model", self.get2DMatrix(rectTransform))
                     self.guiShader.setFloat(b"depth", renderer.depth)

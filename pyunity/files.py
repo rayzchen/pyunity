@@ -7,12 +7,11 @@ Also manages project structure.
 __all__ = ["Behaviour", "Texture2D", "Prefab",
            "File", "Project"]
 
-from inspect import FullArgSpec
-from OpenGL import GL as gl
-from PIL import Image
 from .values import Material, Color
 from .core import Component, ShowInInspector
 from . import Logger
+from OpenGL import GL as gl
+from PIL import Image
 from types import ModuleType
 from uuid import uuid4
 import glob
@@ -315,17 +314,14 @@ class Skybox:
         gl.glEnableVertexAttribArray(0)
         gl.glVertexAttribPointer(
             0, 3, gl.GL_FLOAT, gl.GL_FALSE, 3 * gl.sizeof(ctypes.c_float), None)
-
+        
+        Logger.LogLine(Logger.INFO, "Loaded skybox")
         self.compiled = True
 
     def use(self):
         if not self.compiled:
             self.compile()
         gl.glBindTexture(gl.GL_TEXTURE_CUBE_MAP, self.texture)
-    
-    def __del__(self):
-        if self.compiled:
-            gl.glDeleteTextures(1, self.texture)
 
 class Prefab:
     """Prefab model"""

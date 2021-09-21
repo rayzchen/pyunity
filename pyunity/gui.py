@@ -4,13 +4,14 @@ __all__ = ["Canvas", "RectData", "RectAnchors",
 
 from .errors import PyUnityException
 from .values import Vector2, Color, RGB
-from .core import Component, GameObject, ShowInInspector
+from .core import Component, SingleComponent, GameObject, ShowInInspector
 from .files import Texture2D
 from .input import Input, MouseCode, KeyState
 from PIL import Image, ImageDraw, ImageFont
 from types import FunctionType
 import os
 import sys
+import enum
 
 class Canvas(Component):
     def Update(self, updated):
@@ -93,7 +94,7 @@ class RectOffset(RectData):
         self.min = pos - size / 2
         self.max = pos + size / 2
 
-class RectTransform(Component):
+class RectTransform(SingleComponent):
     anchors = ShowInInspector(RectAnchors)
     offset = ShowInInspector(RectOffset)
     pivot = ShowInInspector(Vector2)
@@ -162,7 +163,7 @@ class Gui:
         if color is None:
             color = RGB(0, 0, 0)
         textComp.color = color
-        textComp.centeredX = True
+        textComp.centeredX = TextAlign.Center
 
         scene.Add(button)
         scene.Add(textureObj)
@@ -234,13 +235,18 @@ class Font:
     def __reduce__(self):
         return (FontLoader.LoadFont, (self.name, self.size))
 
+class TextAlign(enum.IntEnum):
+    Left = enum.auto()
+    Center = enum.auto()
+    Right = enum.auto()
+
 class Text(Component):
     font = ShowInInspector(Font, FontLoader.LoadFont("Arial", 24))
     text = ShowInInspector(str, "Text")
     color = ShowInInspector(Color)
     depth = ShowInInspector(float, 0.1)
-    centeredX = ShowInInspector(bool, False)
-    centeredY = ShowInInspector(bool, True)
+    centeredX = ShowInInspector(TextAlign, TextAlign.Left)
+    centeredY = ShowInInspector(TextAlign, TextAlign.Center)
     def __init__(self, transform):
         super(Text, self).__init__(transform)
         self.rect = None
@@ -259,14 +265,18 @@ class Text(Component):
 
         draw = ImageDraw.Draw(im)
         width, height = draw.textsize(self.text, font=self.font._font)
-        if self.centeredX:
+        if self.centeredX == TextAlign.Left:
+            offX = 0
+        elif self.centeredX == TextAlign.Center:
             offX = (size.x - width) // 2
         else:
-            offX = 0
-        if self.centeredY:
+            offX = size.x - width
+        if self.centeredY == TextAlign.Left:
+            offY = 0
+        elif self.centeredY == TextAlign.Center:
             offY = (size.y - height) // 2
         else:
-            offY = 0
+            offY = size.y - height
         
         draw.text((offX, offY), self.text, font=self.font._font,
             fill=tuple(self.color))
