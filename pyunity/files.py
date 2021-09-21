@@ -100,6 +100,7 @@ class Behaviour(Component):
         pass
 
 class Scripts:
+    """Utility class for loading scripts in a folder."""
 
     var = {}
 
@@ -256,6 +257,7 @@ class Texture2D:
         gl.glBindTexture(gl.GL_TEXTURE_2D, self.texture)
 
 class Skybox:
+    """Skybox model consisting of 6 images"""
     names = ["right.jpg", "left.jpg", "top.jpg",
              "bottom.jpg", "front.jpg", "back.jpg"]
     points = [
@@ -326,6 +328,7 @@ class Skybox:
             gl.glDeleteTextures(1, self.texture)
 
 class Prefab:
+    """Prefab model"""
     def __init__(self, gameObject, components):
         self.gameObject = gameObject
         self.components = components
